@@ -1,5 +1,7 @@
 extends Node2D
 
+var health = 100
+
 var targetPosition = Vector2()
 var moveSpeed = 100
 var rotationSpeed = 2
@@ -39,3 +41,9 @@ func _on_enemy_destroyed():
 	var waveManager = get_node("/root/WaveManager")  #
 	waveManager.count -= 1  
 	queue_free()  
+
+func attackBase():
+	pass
+	
+func attackGentil():
+	pass
