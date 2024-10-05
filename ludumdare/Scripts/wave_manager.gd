@@ -8,7 +8,7 @@ class_name WaveManager
 @export_category("Spawn")
 @export var count = 0
 @export var arrayEnemy = []
-@export var maxCount = 5
+@export var maxCount = 1
 
 @onready var pauseMenu = $PauseMenu
 
@@ -32,16 +32,8 @@ func _input(_event):
 			pauseMenu.show()
 
 func _process(_delta: float) -> void:
-	if arrayEnemy.size() == 0 and waveIndex <= 15:
-		maxCount *= 1.3
-		waveIndex +=1
-	#spawn_timer += _delta
-	#if spawn_timer >= spawn_interval and count < maxCount:
-	#	spawnEnemy()
-	#	spawn_timer = 0.0  # Réinitialise le timer après chaque spawn
-	if count < maxCount and waveIndex <= 15:
-		spawnEnemy() 
-
+	pass
+	
 func spawnEnemy() -> void:
 	var enemy = EnemyScene[0].instantiate()
 	enemy.position = SpawnerArray[randi_range(0,7)].position
@@ -69,4 +61,20 @@ func hideOpenMenu():
 	return pauseMenu.visible
 
 func getWaveIndex():
+	print(waveIndex)
+
+
+func _on_timer_timeout() -> void:
+	if waveIndex == 0: 
+		if count < maxCount:
+			spawnEnemy()
+			count += 1
+			waveIndex += 1
+	else:
+		if arrayEnemy.size() == 0 and waveIndex <= 15:
+			maxCount *= 1.3 + 1
+			print(maxCount)
+			waveIndex +=1
+		if count < maxCount and waveIndex <= 15:
+			spawnEnemy()
 	print(waveIndex)
