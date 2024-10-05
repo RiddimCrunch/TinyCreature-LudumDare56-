@@ -38,16 +38,10 @@ grow_vertical = 2
 layout_mode = 2
 text = "Play"
 
-[node name="Options" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Options
-"
-
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit
 "
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
