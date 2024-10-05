@@ -1,3 +1,35 @@
-[gd_scene format=3 uid="uid://de68th1agn6x8"]
+[gd_scene load_steps=3 format=3 uid="uid://de68th1agn6x8"]
 
-[node name="WaveManager" type="Node"]
+[ext_resource type="Script" path="res://Scripts/wave_manager.gd" id="1_nc1wb"]
+[ext_resource type="PackedScene" uid="uid://b43ht5e0oufef" path="res://Scenes/Enemy.tscn" id="2_q142q"]
+
+[node name="WaveManager" type="Node" node_paths=PackedStringArray("SpawnerArray")]
+script = ExtResource("1_nc1wb")
+EnemyScene = Array[PackedScene]([ExtResource("2_q142q")])
+SpawnerArray = [NodePath("SpawnPoint/Spawn"), NodePath("SpawnPoint/Spawn1"), NodePath("SpawnPoint/Spawn2"), NodePath("SpawnPoint/Spawn3"), NodePath("SpawnPoint/Spawn4"), NodePath("SpawnPoint/Spawn5"), NodePath("SpawnPoint/Spawn6"), NodePath("SpawnPoint/Spawn7")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SpawnPoint" type="Node" parent="."]
+
+[node name="Spawn" type="Node2D" parent="SpawnPoint"]
+
+[node name="Spawn1" type="Node2D" parent="SpawnPoint"]
+
+[node name="Spawn2" type="Node2D" parent="SpawnPoint"]
+
+[node name="Spawn3" type="Node2D" parent="SpawnPoint"]
+
+[node name="Spawn4" type="Node2D" parent="SpawnPoint"]
+
+[node name="Spawn5" type="Node2D" parent="SpawnPoint"]
+
+[node name="Spawn6" type="Node2D" parent="SpawnPoint"]
+
+[node name="Spawn7" type="Node2D" parent="SpawnPoint"]
