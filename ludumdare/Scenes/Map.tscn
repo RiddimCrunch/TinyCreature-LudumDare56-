@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://sg5dev37dm5w"]
+
+[ext_resource type="PackedScene" uid="uid://slee60yvg302" path="res://Scenes/Player.tscn" id="1_t7pji"]
+[ext_resource type="PackedScene" uid="uid://de68th1agn6x8" path="res://Scenes/WaveManager.tscn" id="2_igx7f"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_t7pji")]
+
+[node name="WaveManager" parent="." instance=ExtResource("2_igx7f")]

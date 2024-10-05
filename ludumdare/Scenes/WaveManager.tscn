@@ -9,14 +9,6 @@ script = ExtResource("1_nc1wb")
 EnemyScene = Array[PackedScene]([ExtResource("2_q142q")])
 SpawnerArray = [NodePath("SpawnPoint/Spawn"), NodePath("SpawnPoint/Spawn1"), NodePath("SpawnPoint/Spawn2"), NodePath("SpawnPoint/Spawn3"), NodePath("SpawnPoint/Spawn4"), NodePath("SpawnPoint/Spawn5"), NodePath("SpawnPoint/Spawn6"), NodePath("SpawnPoint/Spawn7")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="SpawnPoint" type="Node" parent="."]
 
 [node name="Spawn" type="Node2D" parent="SpawnPoint"]
