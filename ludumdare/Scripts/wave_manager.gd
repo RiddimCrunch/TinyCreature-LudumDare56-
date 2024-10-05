@@ -43,13 +43,13 @@ func spawnEnemy() -> void:
 
 func setSpawnerPosition() -> void:
 	SpawnerArray[0].position = Vector2(0, 0)
-	SpawnerArray[1].position = Vector2(DisplayServer.screen_get_size().x /2., 0)
-	SpawnerArray[2].position = Vector2(DisplayServer.screen_get_size().x, 0)
-	SpawnerArray[3].position = Vector2(0, DisplayServer.screen_get_size().y / 2.)
-	SpawnerArray[4].position = Vector2(DisplayServer.screen_get_size().x, DisplayServer.screen_get_size().y / 2.) 
-	SpawnerArray[5].position = Vector2(0, DisplayServer.screen_get_size().y)
-	SpawnerArray[6].position = Vector2(DisplayServer.screen_get_size().x / 2., DisplayServer.screen_get_size().y)
-	SpawnerArray[7].position = Vector2(DisplayServer.screen_get_size().x, DisplayServer.screen_get_size().y)
+	SpawnerArray[1].position = Vector2(1152 /2., 0)
+	SpawnerArray[2].position = Vector2(1152, 0)
+	SpawnerArray[3].position = Vector2(0, 648 / 2.)
+	SpawnerArray[4].position = Vector2(1152, 648 / 2.) 
+	SpawnerArray[5].position = Vector2(0, 648)
+	SpawnerArray[6].position = Vector2(1152 / 2., 648)
+	SpawnerArray[7].position = Vector2(1152, 648)
 
 func clear_enemies() -> void:
 	for enemy in arrayEnemy:
@@ -69,12 +69,12 @@ func _on_timer_timeout() -> void:
 		if count < maxCount:
 			spawnEnemy()
 			count += 1
-			waveIndex += 1
+			waveIndex += 1 
 	else:
-		if arrayEnemy.size() == 0 and waveIndex <= 15:
+		if arrayEnemy.size() == 0:
 			maxCount *= 1.3 + 1
 			print(maxCount)
 			waveIndex +=1
-		if count < maxCount and waveIndex <= 15:
+		if count < maxCount:
 			spawnEnemy()
 	print(waveIndex)

@@ -10,3 +10,6 @@ script = ExtResource("1_c322o")
 [node name="Node2D" parent="." instance=ExtResource("1_t7pji")]
 
 [node name="WaveManager" parent="." instance=ExtResource("2_igx7f")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 324)

@@ -12,7 +12,7 @@ var rotating = false
 func _ready() -> void:
 	randomize()
 	modulate = Color(randf(), randf(), randf(), 1.0)
-	targetPosition = DisplayServer.screen_get_size() / 2
+	targetPosition = Vector2(1152/2, 648/2)
 
 
 func _process(delta: float) -> void:
