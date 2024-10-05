@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="LudumDare"
-run/main_scene="res://Scene/Player.tscn"
+run/main_scene="res://Scenes/Player.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [file_customization]
 
 folder_colors={
-"res://Scene/": "purple"
+"res://Scenes/": "purple",
+"res://Scripts/": "teal"
 }
