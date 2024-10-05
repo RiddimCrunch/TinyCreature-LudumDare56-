@@ -35,7 +35,6 @@ func _process(_delta: float) -> void:
 	if arrayEnemy.size() == 0 and waveIndex <= 15:
 		maxCount *= 1.3
 		waveIndex +=1
-		print(waveIndex)
 	#spawn_timer += _delta
 	#if spawn_timer >= spawn_interval and count < maxCount:
 	#	spawnEnemy()
@@ -68,3 +67,6 @@ func clear_enemies() -> void:
 
 func hideOpenMenu():
 	return pauseMenu.visible
+
+func getWaveIndex():
+	print(waveIndex)

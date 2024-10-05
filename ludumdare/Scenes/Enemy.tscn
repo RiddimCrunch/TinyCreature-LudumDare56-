@@ -14,7 +14,8 @@ position = Vector2(4.76837e-07, 4.20213e-06)
 scale = Vector2(20, 15)
 mesh = SubResource("CapsuleMesh_smt8c")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+disable_mode = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CapsuleShape2D_ww1ff")
