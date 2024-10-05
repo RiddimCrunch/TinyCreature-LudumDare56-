@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var creature_scene: PackedScene
-@export var MobTable = preload("res://mob_table.gd")
+@export var MobTable = preload("res://Scripts/mob_table.gd")
 
 # Called when the node enters the scene tree for the first time.
 func spawn(points_available: int) -> void:

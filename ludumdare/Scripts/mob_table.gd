@@ -1,6 +1,6 @@
 extends Resource
 
-const Mob = preload("res://mob.gd")
+const Mob = preload("res://Scripts/mob.gd")
 enum MobTypesEnum { normal_mob, big_mob }
 
 var mob_types = {
