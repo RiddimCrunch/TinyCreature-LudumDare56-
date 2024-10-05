@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cwambahbcn6mb"]
+[gd_scene load_steps=2 format=3 uid="uid://cwambahbcn6mb"]
+
+[ext_resource type="Script" path="res://Scripts/pause.gd" id="1_leluo"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_leluo")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -43,3 +46,7 @@ text = "Options
 [node name="MainScreen" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Main menu"
+
+[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainScreen" to="." method="_on_main_screen_pressed"]
