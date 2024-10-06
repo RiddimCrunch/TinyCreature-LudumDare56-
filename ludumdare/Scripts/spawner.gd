@@ -9,7 +9,7 @@ signal creature_spawned(creature: Ally)
 func spawn(_points_available: int) -> void:
 	var spawner_location = $SpawnerPosition
 	
-	for i in range(5):
+	for i in range(6):
 		var creature = creature_scene.instantiate()
 		var longueur = 500
 		creature.position = spawner_location.global_position + Vector2(randi_range(-longueur, longueur), randi_range(-longueur, longueur))

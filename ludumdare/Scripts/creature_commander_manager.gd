@@ -20,7 +20,8 @@ func command_mode(enable: bool):
 		
 func clear_selected():
 	for s in selected_obj:
-		s.sprite.material = null
+		if s != null:
+			s.sprite.material = null
 	selected_obj.clear()
 
 # Called when the node enters the scene tree for the first time.
@@ -57,7 +58,8 @@ func _on_line_command_command_done(points: PackedVector2Array) -> void:
 	var obj_i = 0
 	while obj_i < selected_obj.size():
 		if c > every_p:
-			selected_obj[obj_i].cmd_set_target(points[p_i].clamp(Vector2.ZERO, screen_size), Ally.AllyState.moving_and_looking)
+			if selected_obj[obj_i] != null:
+				selected_obj[obj_i].cmd_set_target(points[p_i].clamp(Vector2.ZERO, screen_size), Ally.AllyState.moving_and_looking)
 			c = 0
 			obj_i += 1
 			

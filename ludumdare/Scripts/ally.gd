@@ -5,7 +5,7 @@ var health = 100
 
 var state: AllyState = AllyState.wandering
 
-var move_speed = 200
+var move_speed = 220
 var move_response = 5
 var velocity_change = Vector2.ZERO
 
@@ -121,9 +121,9 @@ func die():
 
 func _on_body_entered(body: Node) -> void:
 	if (!body.is_in_group("Mechant")):
-		apply_central_impulse(-velocity_change.normalized() * 250)
+		apply_central_impulse(-velocity_change.normalized() * 150)
 		return
-	apply_central_impulse(-velocity_change.normalized() * 1000)
+	apply_central_impulse(-velocity_change.normalized() * 750)
 	print("Collision")
 	if body.type.type == type.type:
 		body.receive_damage(20)

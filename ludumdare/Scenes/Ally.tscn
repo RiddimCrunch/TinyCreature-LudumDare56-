@@ -89,7 +89,6 @@ texture = ExtResource("2_bttc6")
 offset = Vector2(0, -6)
 
 [node name="Detection" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 position = Vector2(0, -6)
@@ -98,7 +97,6 @@ shape = SubResource("CircleShape2D_1u5p5")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_viu7n")
 debug_color = Color(0, 0.64946, 0.142717, 0.42)

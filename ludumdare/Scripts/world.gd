@@ -5,6 +5,11 @@ var point_counter = 0
 var current_round = 0
 var is_running = true
 var allies = []
+
+var red_count = 0
+var green_count = 0
+var blue_count = 0
+
 var game_state = GameState.between_combat
 var hq_health = 500
 
@@ -62,8 +67,24 @@ func check_win_lose():
 func _on_hq_creature_spawned(creature: Ally) -> void:
 	creature.dead.connect(_on_creature_death)
 	allies.append(creature) # Replace with function body.
+	if red_count <= blue_count and red_count <= green_count:
+		red_count+=1
+		creature.type.change_type(0)
+	elif blue_count <= red_count and blue_count <= green_count:
+		blue_count+=1
+		creature.type.change_type(2)
+	else: 
+		green_count+=1
+		creature.type.change_type(1)
 	
 func _on_creature_death(creature: Ally):
 	var index = allies.find(creature)
 	if index < 0: return
 	allies.remove_at(index)
+	match creature.type.type:
+		EntityType.TypeEnum.red:
+			red_count-=1
+		EntityType.TypeEnum.green:
+			green_count-=1
+		EntityType.TypeEnum.blue:
+			blue_count-=1
