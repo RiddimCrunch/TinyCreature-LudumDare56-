@@ -25,7 +25,7 @@ signal dead(enemy: Ally)
 enum AllyState { in_combat, wandering, moving_and_looking, moving, waiting }
 
 func _ready() -> void:
-	sprite.material.set_shader_parameter("flash_modifer", 0)
+	pass
 
 func _process(delta: float) -> void:
 	match state:

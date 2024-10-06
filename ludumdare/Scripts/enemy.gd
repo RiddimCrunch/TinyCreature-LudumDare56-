@@ -23,7 +23,6 @@ signal dead(enemy: Enemy)
 @onready var flashTimer = $FlashTimer
 
 func _ready() -> void:
-	sprite.material.set_shader_parameter("flash_modifer", 0)
 	randomize()
 	type.change_type(randi_range(0,EntityType.TypeEnum.size()-1))
 	targetPosition = get_viewport_rect().get_center()
