@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6hsh6jyb41hl"]
+[gd_scene load_steps=5 format=3 uid="uid://b6hsh6jyb41hl"]
 
 [ext_resource type="Script" path="res://Scripts/ally.gd" id="1_ds64s"]
-[ext_resource type="Material" uid="uid://br17bjf7skqhr" path="res://Assets/Ally/outline_mat.tres" id="2_60n2i"]
-[ext_resource type="Texture2D" uid="uid://klems1ulpwnt" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
+[ext_resource type="Texture2D" uid="uid://vj1dixds2rvu" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4330k"]
 
@@ -13,7 +12,6 @@ radius = 84.0536
 script = ExtResource("1_ds64s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("2_60n2i")
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_bttc6")
 
