@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="LudumDare"
-run/main_scene="res://Scenes/World.tscn"
+run/main_scene="res://Scenes/splash_screen_manager.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 <<<<<<<HEADrun/main_scene="res://Scenes/Menu/MainMenu.tscn"
 
@@ -33,6 +34,7 @@ folder_colors={
 "res://Assets/Ally/": "green",
 "res://Assets/Cursor/": "gray",
 "res://Assets/Enemy/": "red",
+"res://Assets/SplashScreen/": "yellow",
 "res://Scenes/": "blue",
 "res://Scripts/": "pink"
 }
