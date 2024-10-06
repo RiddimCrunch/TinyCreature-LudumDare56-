@@ -1,18 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc70i730qk1bk"]
+[gd_scene load_steps=3 format=3 uid="uid://bc70i730qk1bk"]
 
 [ext_resource type="Script" path="res://Scripts/spawner.gd" id="1_jl2fb"]
-[ext_resource type="Texture2D" uid="uid://r8taadwhsx0k" path="res://Assets/tile_0008.png" id="2_cnm3h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66760"]
-size = Vector2(183, 175)
+size = Vector2(201, 130)
 
 [node name="Hq" type="Node2D"]
 script = ExtResource("1_jl2fb")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(949, 582)
-scale = Vector2(8.5, 8.5)
-texture = ExtResource("2_cnm3h")
 
 [node name="SpawnerPosition" type="Marker2D" parent="."]
 position = Vector2(950, 600)
@@ -20,5 +14,5 @@ position = Vector2(950, 600)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(948.5, 601.5)
+position = Vector2(939.5, 579)
 shape = SubResource("RectangleShape2D_66760")
