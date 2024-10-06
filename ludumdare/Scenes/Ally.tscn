@@ -1,11 +1,31 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2lqxjgjfhou5"]
+[gd_scene load_steps=14 format=3 uid="uid://c2lqxjgjfhou5"]
 
 [ext_resource type="Script" path="res://Scripts/ally.gd" id="1_ds64s"]
-[ext_resource type="Texture2D" uid="uid://vj1dixds2rvu" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
+[ext_resource type="Texture2D" uid="uid://30y2xyhcwvwc" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
 [ext_resource type="Script" path="res://Scripts/entity_type.gd" id="3_1hm6x"]
-[ext_resource type="Texture2D" uid="uid://bk726y2mtler5" path="res://Assets/Ally/tile_0108_red.png" id="4_8elrc"]
-[ext_resource type="Texture2D" uid="uid://dyec8gcffwhc3" path="res://Assets/Ally/tile_0108_green.png" id="5_uxjf3"]
-[ext_resource type="Texture2D" uid="uid://pbrb12r68ynw" path="res://Assets/Ally/tile_0108_blue.png" id="6_ohd7t"]
+[ext_resource type="Texture2D" uid="uid://cuavm2b3ahl3h" path="res://Assets/Ally/tile_0108_red.png" id="4_8elrc"]
+[ext_resource type="Texture2D" uid="uid://bfno03ysxve5t" path="res://Assets/Ally/tile_0108_green.png" id="5_uxjf3"]
+[ext_resource type="Texture2D" uid="uid://douisif5tn77c" path="res://Assets/Ally/tile_0108_blue.png" id="6_ohd7t"]
+
+[sub_resource type="Shader" id="Shader_o7vo5"]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color = vec4(1.0);
+uniform float flash_modifer : hint_range(0.0, 1.0) = 0;
+
+void fragment() {
+  vec4 color = texture(TEXTURE, UV);
+  color.rgb = mix(color.rgb, flash_color.rgb, flash_modifer);
+  COLOR = color;
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nn08"]
+resource_local_to_scene = true
+shader = SubResource("Shader_o7vo5")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/flash_modifer = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1u5p5"]
 radius = 84.0536
@@ -83,6 +103,7 @@ max_contacts_reported = 100
 script = ExtResource("1_ds64s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2nn08")
 position = Vector2(0, 3.5)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_bttc6")
@@ -114,6 +135,10 @@ type_sprite = {
 2: ExtResource("6_ohd7t")
 }
 
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Detection" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

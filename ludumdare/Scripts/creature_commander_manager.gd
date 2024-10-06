@@ -7,6 +7,7 @@ class_name CreatureCommander
 @onready var line_command = $LineCommand
 var selected_obj: Array[Ally] = []
 var outline_mat = preload("res://Assets/Ally/outline_mat.tres")
+var blink = preload("res://Assets/Ally/Ally.tres")
 
 func command_mode(enable: bool):
 	if enable:
@@ -21,7 +22,9 @@ func command_mode(enable: bool):
 func clear_selected():
 	for s in selected_obj:
 		if s != null:
-			s.sprite.material = null
+			var local_blink = blink.duplicate()
+			local_blink.set_shader_parameter("flash_modifer", 0)
+			s.sprite.material = local_blink
 	selected_obj.clear()
 
 # Called when the node enters the scene tree for the first time.

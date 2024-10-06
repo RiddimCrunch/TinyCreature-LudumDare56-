@@ -17,13 +17,15 @@ var target_enemy: Enemy = null
 @onready var sprite = $Sprite2D
 @onready var anim = $AnimationPlayer
 @onready var type = $EntityType
+@onready var flashTimer = $FlashTimer
+
 
 signal dead(enemy: Ally)
 
 enum AllyState { in_combat, wandering, moving_and_looking, moving, waiting }
 
 func _ready() -> void:
-	pass
+	sprite.material.set_shader_parameter("flash_modifer", 0)
 
 func _process(delta: float) -> void:
 	match state:
@@ -78,10 +80,10 @@ func generate_target_position():
 		generate_target_position()
 	target_set = true
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	apply_central_force(velocity_change * move_response)
 	
-func move_torward_target(delta: float, t: Vector2):	
+func move_torward_target(_delta: float, t: Vector2):	
 	
 	var distance = t - position
 	var target_velocity = distance.normalized() * move_speed
@@ -132,6 +134,17 @@ func _on_body_entered(body: Node) -> void:
 	start_combat(body)
 	if body.type.type == type.type:
 		body.receive_damage(20)
+		flash()
 	else:
 		receive_damage(50)
+		flash()
 	
+func flash():
+	sprite.material.set_shader_parameter("flash_modifer", 1)
+	flashTimer.start()
+	
+
+
+func _on_flash_timer_timeout() -> void:
+	sprite.material.set_shader_parameter("flash_modifer", 0)
+	flashTimer.stop()

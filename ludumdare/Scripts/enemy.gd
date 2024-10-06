@@ -32,10 +32,10 @@ func _process(delta: float) -> void:
 	else:
 		start_rotating()
 		
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	apply_central_force(velocity_change * move_response)
 		
-func move_toward_center(delta: float) -> void:
+func move_toward_center(_delta: float) -> void:
 	var target_position_float = Vector2(targetPosition.x, targetPosition.y)
 	var direction = (target_position_float - position).normalized()
 	var target_velocity = direction * move_speed

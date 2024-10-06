@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6hsh6jyb41hl"]
 
-[ext_resource type="Texture2D" uid="uid://vj1dixds2rvu" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
+[ext_resource type="Texture2D" uid="uid://30y2xyhcwvwc" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6p1vb"]
 radius = 84.0536
