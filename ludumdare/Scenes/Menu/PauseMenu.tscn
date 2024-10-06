@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwambahbcn6mb"]
 
-[ext_resource type="FontFile" uid="uid://f0g74o2dp2mv" path="res://Assets/dogica.ttf" id="1_4a4qs"]
+[ext_resource type="FontFile" uid="uid://d2nx2xrfct158" path="res://Assets/dogica.ttf" id="1_4a4qs"]
 [ext_resource type="Script" path="res://Scripts/pause.gd" id="1_leluo"]
 
 [sub_resource type="Theme" id="Theme_i074i"]
@@ -34,21 +34,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -50.5
-offset_right = 48.0
-offset_bottom = 50.5
+offset_left = -252.0
+offset_top = -95.0
+offset_right = -28.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 theme_override_constants/separation = 24
 alignment = 1
 
 [node name="Resume" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_4a4qs")
 text = "Resume"
 
 [node name="MainScreen" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_4a4qs")
 text = "Main menu"
 
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]

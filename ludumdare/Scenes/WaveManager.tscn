@@ -31,6 +31,7 @@ SpawnerArray = [NodePath("SpawnPoint/Spawn"), NodePath("SpawnPoint/Spawn1"), Nod
 process_mode = 3
 visible = false
 z_index = 1
+theme = null
 
 [node name="Timer" type="Timer" parent="."]
 

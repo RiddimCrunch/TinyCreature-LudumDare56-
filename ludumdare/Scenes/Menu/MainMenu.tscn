@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=4 uid="uid://blnxm3gda2oiy"]
 
-[ext_resource type="FontFile" uid="uid://f0g74o2dp2mv" path="res://Assets/dogica.ttf" id="1_kwp0j"]
+[ext_resource type="FontFile" uid="uid://d2nx2xrfct158" path="res://Assets/dogica.ttf" id="1_kwp0j"]
 [ext_resource type="Script" path="res://Scripts/mainMenu.gd" id="1_w8guj"]
 [ext_resource type="TileSet" uid="uid://dfw7xnfg83lfb" path="res://Assets/TileSets/kenney_tiny-town/Tilemap/TileSet.tres" id="3_1omks"]
-[ext_resource type="FontFile" uid="uid://d2g861xq51i4e" path="res://Assets/Daydream.ttf" id="4_yu2oa"]
+[ext_resource type="FontFile" uid="uid://rjjmukqtguk1" path="res://Assets/Daydream.ttf" id="4_yu2oa"]
 
 [sub_resource type="Theme" id="Theme_6fveu"]
 default_font = ExtResource("1_kwp0j")
@@ -46,12 +46,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -50.5
-offset_right = 49.0
-offset_bottom = 50.5
+offset_left = -122.0
+offset_top = -81.0
+offset_right = -18.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 theme_override_constants/separation = 24
 alignment = 1
 
