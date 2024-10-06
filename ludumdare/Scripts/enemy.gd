@@ -1,22 +1,22 @@
-extends Node2D
+extends RigidBody2D
 class_name Enemy
 
 var health = 100
 
 var targetPosition = Vector2()
-var moveSpeed = 100
+var moveSpeed = 50
 var rotationSpeed = 2
 var angle = 0
 var radius =  100
 var rotating = false
 
-signal dead(enemy: Enemy)
+@onready var type: EntityType = $EntityType
 
-@onready var rigidbody : RigidBody2D = $RigidBody2D
+signal dead(enemy: Enemy)
 
 func _ready() -> void:
 	randomize()
-	modulate = Color(randf(), randf(), randf(), 1.0)
+	type.change_type(randi_range(0,EntityType.TypeEnum.size()-1))
 	targetPosition = get_viewport_rect().get_center()
 
 
@@ -60,12 +60,5 @@ func receive_damage(dmg: float):
 		die()
 		
 func die():
-	queue_free()
 	dead.emit(self)
-
-func _on_area_2d_area_entered(_area: Area2D) -> void:
-	pass # Replace with function body.
-
-
-func _on_rigid_body_2d_body_entered(_body: Node) -> void:
-	pass # Replace with function body.
+	queue_free()

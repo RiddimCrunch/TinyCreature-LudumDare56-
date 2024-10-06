@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://de68th1agn6x8"]
 
 [ext_resource type="Script" path="res://Scripts/wave_manager.gd" id="1_nc1wb"]
-[ext_resource type="PackedScene" uid="uid://b43ht5e0oufef" path="res://Scenes/Enemy.tscn" id="2_q142q"]
+[ext_resource type="PackedScene" uid="uid://sj4v2dxei0bh" path="res://Scenes/Enemy.tscn" id="2_q142q"]
 [ext_resource type="PackedScene" uid="uid://cwambahbcn6mb" path="res://Scenes/Menu/PauseMenu.tscn" id="3_ci3y4"]
 
 [node name="WaveManager" type="Node" node_paths=PackedStringArray("SpawnerArray")]

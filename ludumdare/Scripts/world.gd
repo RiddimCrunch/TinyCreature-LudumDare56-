@@ -60,4 +60,10 @@ func check_win_lose():
 		
 	
 func _on_hq_creature_spawned(creature: Ally) -> void:
+	creature.dead.connect(_on_creature_death)
 	allies.append(creature) # Replace with function body.
+	
+func _on_creature_death(creature: Ally):
+	var index = allies.find(creature)
+	if index < 0: return
+	allies.remove_at(index)

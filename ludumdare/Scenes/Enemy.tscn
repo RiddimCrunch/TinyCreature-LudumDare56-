@@ -1,32 +1,89 @@
-[gd_scene load_steps=5 format=3 uid="uid://b43ht5e0oufef"]
+[gd_scene load_steps=12 format=3 uid="uid://sj4v2dxei0bh"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_kc7uj"]
+[ext_resource type="Texture2D" uid="uid://nx8k181wb64p" path="res://Assets/Enemy/tile_0109.png" id="1_kh2ko"]
+[ext_resource type="Script" path="res://Scripts/entity_type.gd" id="3_nisge"]
+[ext_resource type="Texture2D" uid="uid://b2u3s7xdji6mc" path="res://Assets/Enemy/tile_0109_red.png" id="4_5kkfw"]
+[ext_resource type="Texture2D" uid="uid://d8twgsvi2l6v" path="res://Assets/Enemy/tile_0109_green.png" id="5_5jheu"]
+[ext_resource type="Texture2D" uid="uid://bbqdkhvfa4hvr" path="res://Assets/Enemy/tile_0109_blue.png" id="6_bk088"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_smt8c"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fa547"]
+radius = 26.0
+height = 74.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ww1ff"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6ohik"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_si3x0"]
 radius = 84.0536
 
-[node name="Enemy" type="Node2D" groups=["Mechant"]]
+[sub_resource type="Animation" id="Animation_74dnj"]
+resource_name = "slow_wiggle_walk"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.15708, 0.15708]
+}
+
+[sub_resource type="Animation" id="Animation_wxfmn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.15708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dxvcn"]
+_data = {
+"RESET": SubResource("Animation_wxfmn"),
+"slow_wiggle_walk": SubResource("Animation_74dnj")
+}
+
+[node name="Enemy" type="RigidBody2D" groups=["Mechant"]]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 100
 script = ExtResource("1_kc7uj")
 
-[node name="Mesh" type="MeshInstance2D" parent="."]
-position = Vector2(4.76837e-07, 4.20213e-06)
-scale = Vector2(20, 15)
-mesh = SubResource("CapsuleMesh_smt8c")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -36)
+rotation = -0.15708
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_kh2ko")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-disable_mode = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CapsuleShape2D_ww1ff")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -35)
+shape = SubResource("CapsuleShape2D_fa547")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_6ohik")
+position = Vector2(0, -28)
+shape = SubResource("CircleShape2D_si3x0")
 
-[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dxvcn")
+}
+autoplay = "slow_wiggle_walk"
+
+[node name="EntityType" type="Node" parent="."]
+script = ExtResource("3_nisge")
+type_sprite = {
+0: ExtResource("4_5kkfw"),
+1: ExtResource("5_5jheu"),
+2: ExtResource("6_bk088")
+}

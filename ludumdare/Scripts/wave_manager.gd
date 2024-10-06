@@ -49,6 +49,7 @@ func spawnEnemy() -> void:
 	
 func on_dead(enemy: Enemy):
 	var index = arrayEnemy.find(enemy)
+	if index < 0: return
 	arrayEnemy.remove_at(index)
 
 func setSpawnerPosition() -> void:

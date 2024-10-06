@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2lqxjgjfhou5"]
+[gd_scene load_steps=12 format=3 uid="uid://c2lqxjgjfhou5"]
 
 [ext_resource type="Script" path="res://Scripts/ally.gd" id="1_ds64s"]
 [ext_resource type="Texture2D" uid="uid://vj1dixds2rvu" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
+[ext_resource type="Script" path="res://Scripts/entity_type.gd" id="3_1hm6x"]
+[ext_resource type="Texture2D" uid="uid://bk726y2mtler5" path="res://Assets/Ally/tile_0108_red.png" id="4_8elrc"]
+[ext_resource type="Texture2D" uid="uid://dyec8gcffwhc3" path="res://Assets/Ally/tile_0108_green.png" id="5_uxjf3"]
+[ext_resource type="Texture2D" uid="uid://pbrb12r68ynw" path="res://Assets/Ally/tile_0108_blue.png" id="6_ohd7t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1u5p5"]
 radius = 84.0536
@@ -9,25 +13,109 @@ radius = 84.0536
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_viu7n"]
 radius = 12.0
 
+[sub_resource type="Animation" id="Animation_tgygw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 3.5)]
+}
+
+[sub_resource type="Animation" id="Animation_vyy7n"]
+resource_name = "wiggle_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 2), Vector2(0, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.15708, 0.15708, -0.15708, 0.15708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fwi11"]
+_data = {
+"RESET": SubResource("Animation_tgygw"),
+"wiggle_walk": SubResource("Animation_vyy7n")
+}
+
 [node name="Ally" type="RigidBody2D" groups=["Gentil"]]
 gravity_scale = 0.0
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 100
 script = ExtResource("1_ds64s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 3.5)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_bttc6")
+offset = Vector2(0, -6)
 
 [node name="Detection" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_1u5p5")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_viu7n")
 debug_color = Color(0, 0.64946, 0.142717, 0.42)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fwi11")
+}
+
+[node name="EntityType" type="Node" parent="."]
+script = ExtResource("3_1hm6x")
+type_sprite = {
+0: ExtResource("4_8elrc"),
+1: ExtResource("5_uxjf3"),
+2: ExtResource("6_ohd7t")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Detection" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
