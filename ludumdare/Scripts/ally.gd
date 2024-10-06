@@ -53,7 +53,7 @@ func waiting(_delta: float):
 
 func attack(delta: float):
 	if (target_enemy == null):
-		state = AllyState.moving
+		state = AllyState.moving_and_looking
 		return
 	
 	move_torward_target(delta, target_enemy.position)
@@ -98,8 +98,10 @@ func move_torward_target(delta: float, t: Vector2):
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if (!area.get_parent().is_in_group("Mechant")):
 		return
-	var enemy = area.get_parent()
-	if (target_enemy == null and state != AllyState.moving):
+	var enemy = area.get_parent() 
+	if ((target_enemy == null 
+			or (target_enemy.type.type != type.type and enemy.type.type == type.type))
+			and state != AllyState.moving):
 		target_enemy = enemy
 		state = AllyState.in_combat
 		
