@@ -24,9 +24,8 @@ func _ready() -> void:
 	setSpawnerPosition()
 	pauseMenu.hide()
 
-
-func _input(_event):
-	if Input.get_action_strength("Escape"):
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Escape"):
 		if hideOpenMenu() == true:
 			pauseMenu.hide()
 		else:
