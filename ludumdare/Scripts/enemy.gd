@@ -15,6 +15,7 @@ var radius =  100
 var rotating = false
 
 @onready var type: EntityType = $EntityType
+var world
 
 signal dead(enemy: Enemy)
 
@@ -26,11 +27,16 @@ func _ready() -> void:
 	randomize()
 	type.change_type(randi_range(0,EntityType.TypeEnum.size()-1))
 	targetPosition = get_viewport_rect().get_center()
+	world = find_parent("World")
 
-
+var timer = 0
+var timeout = 1
 func _process(delta: float) -> void:
 	if rotating:
 		rotate_around_center(delta) 
+		timer += delta
+		if timer > timeout:
+			world.hq_health -= 25
 	elif position.distance_to(targetPosition) > radius:
 		move_toward_center(delta) 
 	else:

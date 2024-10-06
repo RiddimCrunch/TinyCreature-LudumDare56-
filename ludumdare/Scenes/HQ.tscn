@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bc70i730qk1bk"]
 
 [ext_resource type="Script" path="res://Scripts/spawner.gd" id="1_jl2fb"]
-[ext_resource type="Texture2D" uid="uid://r8taadwhsx0k" path="res://Assets/tile_0008.png" id="2_cnm3h"]
+[ext_resource type="Texture2D" uid="uid://dnerj141mlcga" path="res://Assets/tile_0008.png" id="2_cnm3h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66760"]
 size = Vector2(183, 175)

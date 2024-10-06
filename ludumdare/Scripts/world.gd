@@ -12,6 +12,7 @@ var blue_count = 0
 
 var game_state = GameState.between_combat
 var hq_health = 500
+signal dmg_taken(hp: int)
 
 enum GameState { in_combat, between_combat }
 
@@ -21,6 +22,9 @@ func _ready() -> void:
 		game_state = GameState.in_combat
 		new_game()
 		
+func hq_take_damage(dmg: int):
+	hq_health -= dmg
+	dmg_taken.emit(hq_health)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

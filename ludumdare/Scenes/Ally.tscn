@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://c2lqxjgjfhou5"]
 
 [ext_resource type="Script" path="res://Scripts/ally.gd" id="1_ds64s"]
-[ext_resource type="Texture2D" uid="uid://30y2xyhcwvwc" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
+[ext_resource type="Texture2D" uid="uid://vj1dixds2rvu" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
 [ext_resource type="Script" path="res://Scripts/entity_type.gd" id="3_1hm6x"]
-[ext_resource type="Texture2D" uid="uid://cuavm2b3ahl3h" path="res://Assets/Ally/tile_0108_red.png" id="4_8elrc"]
-[ext_resource type="Texture2D" uid="uid://bfno03ysxve5t" path="res://Assets/Ally/tile_0108_green.png" id="5_uxjf3"]
-[ext_resource type="Texture2D" uid="uid://douisif5tn77c" path="res://Assets/Ally/tile_0108_blue.png" id="6_ohd7t"]
+[ext_resource type="Texture2D" uid="uid://bk726y2mtler5" path="res://Assets/Ally/tile_0108_red.png" id="4_8elrc"]
+[ext_resource type="Texture2D" uid="uid://dyec8gcffwhc3" path="res://Assets/Ally/tile_0108_green.png" id="5_uxjf3"]
+[ext_resource type="Texture2D" uid="uid://pbrb12r68ynw" path="res://Assets/Ally/tile_0108_blue.png" id="6_ohd7t"]
 
 [sub_resource type="Shader" id="Shader_o7vo5"]
 code = "shader_type canvas_item;
