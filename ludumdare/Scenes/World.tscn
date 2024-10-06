@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://vey6qwwf4p7n"]
+[gd_scene load_steps=9 format=4 uid="uid://vey6qwwf4p7n"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_64sag"]
 [ext_resource type="TileSet" uid="uid://dfw7xnfg83lfb" path="res://Assets/TileSets/kenney_tiny-town/Tilemap/TileSet.tres" id="2_y04go"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c2lqxjgjfhou5" path="res://Scenes/Ally.tscn" id="4_yjy8p"]
 [ext_resource type="PackedScene" uid="uid://dtxiabugsb33o" path="res://Scenes/CreatureCommander.tscn" id="5_yqakn"]
 [ext_resource type="PackedScene" uid="uid://dboiu24tm7lb8" path="res://Scenes/HpBar.tscn" id="7_0hvqx"]
+[ext_resource type="PackedScene" uid="uid://d1mptm78glf18" path="res://Scenes/score.tscn" id="8_vkcuy"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_64sag")
@@ -33,6 +34,14 @@ offset_bottom = 662.0
 creature_scene = ExtResource("4_yjy8p")
 
 [node name="CreatureCommander" parent="." instance=ExtResource("5_yqakn")]
+
+[node name="Score" parent="." instance=ExtResource("8_vkcuy")]
+z_index = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="dmg_taken" from="." to="ProgressBar" method="_on_dmg_taken"]
 [connection signal="creature_spawned" from="Hq" to="." method="_on_hq_creature_spawned"]

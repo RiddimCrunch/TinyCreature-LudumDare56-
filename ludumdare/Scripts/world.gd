@@ -16,6 +16,8 @@ signal dmg_taken(hp: int)
 
 enum GameState { in_combat, between_combat }
 
+@onready var score = $Score
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 		is_running = true
@@ -47,6 +49,7 @@ func _input(_event):
 func win_round(manche: int):
 	var gained_points = 20 * manche + 200	
 	point_counter += gained_points
+	score.setLabel(point_counter)
 	game_state = GameState.between_combat
 	
 func lose_round(_manche: int):
