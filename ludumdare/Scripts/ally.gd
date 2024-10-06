@@ -70,6 +70,7 @@ func generate_target_position():
 func move_torward_target(delta: float):
 	var distance = target - position
 	var direction = distance.normalized()
+	#$RigidBody2D.add_constant_force(direction * moveSpeed * delta)
 	position += direction * moveSpeed * delta
 	var norm = distance.length()
 	if (norm < 0.5):
@@ -95,8 +96,12 @@ func _on_timer_timeout() -> void:
 	wait_timer.stop()
 
 
-func _on_rigid_body_2d_body_entered(body: Node) -> void:
-	if (!body.get_parent().is_in_group("Mechant")):
+func _on_collider_area_entered(area: Area2D) -> void:
+	if (!area.get_parent().is_in_group("Mechant")):
 		return
-	var enemy = body.get_parent()
-	print("Hit enemy")
+	print("Collision")
+	var enemy : Enemy = area.get_parent()
+	var impulse_strength = 100
+	var angle = $RigidBody2D.rotation
+	$RigidBody2D.apply_central_impulse(Vector2(100, 0) * impulse_strength)
+	enemy.receive_damage(20)

@@ -10,6 +10,10 @@ var angle = 0
 var radius =  100
 var rotating = false
 
+signal dead(enemy: Enemy)
+
+@onready var rigidbody : RigidBody2D = $RigidBody2D
+
 func _ready() -> void:
 	randomize()
 	modulate = Color(randf(), randf(), randf(), 1.0)
@@ -49,6 +53,16 @@ func attackBase():
 	
 func attackGentil():
 	pass
+	
+func receive_damage(dmg: float):
+	health -= dmg
+	print("received %s damage" % dmg)
+	if (health <= 0):
+		die()
+		
+func die():
+	queue_free()
+	dead.emit(self)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.

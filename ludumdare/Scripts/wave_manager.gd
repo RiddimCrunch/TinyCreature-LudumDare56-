@@ -42,10 +42,15 @@ func _process(_delta: float) -> void:
 	
 func spawnEnemy() -> void:
 	var enemy = EnemyScene[0].instantiate()
+	enemy.dead.connect(on_dead)
 	enemy.position = SpawnerArray[randi_range(0,7)].position
 	arrayEnemy.append(enemy)
 	add_child(enemy)
 	count += 1
+	
+func on_dead(enemy: Enemy):
+	var index = arrayEnemy.find(enemy)
+	arrayEnemy.remove_at(index)
 
 func setSpawnerPosition() -> void:
 	SpawnerArray[0].position = Vector2(0, 0)
@@ -61,7 +66,7 @@ func clear_enemies() -> void:
 	for enemy in arrayEnemy:
 		enemy.queue_free()  
 	arrayEnemy.clear()  
-	count = 0 
+	count = 0
 
 func hideOpenMenu():
 	return pauseMenu.visible

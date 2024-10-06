@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6hsh6jyb41hl"]
+[gd_scene load_steps=6 format=3 uid="uid://b6hsh6jyb41hl"]
 
 [ext_resource type="Script" path="res://Scripts/ally.gd" id="1_ds64s"]
-[ext_resource type="Texture2D" uid="uid://vj1dixds2rvu" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
+[ext_resource type="Texture2D" uid="uid://klems1ulpwnt" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4330k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6p1vb"]
 radius = 84.0536
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pkjng"]
+radius = 16.0
+height = 36.0
 
 [node name="Ally" type="Node2D" groups=["Gentil"]]
 script = ExtResource("1_ds64s")
@@ -21,19 +25,19 @@ disable_mode = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CapsuleShape2D_4330k")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Detection" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_6p1vb")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="Collider" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-shape = SubResource("CircleShape2D_6p1vb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("CapsuleShape2D_pkjng")
 
 [connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Detection" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Collider" to="." method="_on_collider_area_entered"]
