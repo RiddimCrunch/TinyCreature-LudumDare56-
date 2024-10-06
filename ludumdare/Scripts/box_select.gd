@@ -7,6 +7,7 @@ signal selection_done(box_start: Vector2, box_end: Vector2)
 var start: Vector2 = Vector2(0,0)
 var end: Vector2 = Vector2(0,0)
 var dragging = false
+var color: Color = Color.AQUAMARINE
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -20,11 +21,11 @@ func _input(event: InputEvent) -> void:
 			dragging = false
 			
 func _draw() -> void:
-	var c = Color.AQUAMARINE
-	draw_dashed_line(start, Vector2(start.x, end.y), c, 2)
-	draw_dashed_line(start, Vector2(end.x, start.y), c, 2)
-	draw_dashed_line(Vector2(start.x, end.y), end, c, 2)
-	draw_dashed_line(Vector2(end.x, start.y), end, c, 2)
+	var width = 5
+	draw_dashed_line(start, Vector2(start.x, end.y), color, width)
+	draw_dashed_line(start, Vector2(end.x, start.y), color, width)
+	draw_dashed_line(Vector2(start.x, end.y), end, color, width)
+	draw_dashed_line(Vector2(end.x, start.y), end, color, width)
 		
 func _physics_process(_delta: float) -> void:
 	if dragging:

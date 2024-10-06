@@ -12,13 +12,34 @@ var blink = preload("res://Assets/Ally/Ally.tres")
 enum ColorFilter { red, green, blue, none }
 var active_color_filter = ColorFilter.none
 
+var pointers = {
+	ColorFilter.red: preload("res://Assets/Cursor/pointer_red.png"),
+	ColorFilter.green: preload("res://Assets/Cursor/pointer_green.png"),
+	ColorFilter.blue: preload("res://Assets/Cursor/pointer_blue.png"),
+	ColorFilter.none: preload("res://Assets/Cursor/pointer.png"),
+}
+
+var flags = {
+	ColorFilter.red: preload("res://Assets/Cursor/flag_red.png"),
+	ColorFilter.green: preload("res://Assets/Cursor/flag_green.png"),
+	ColorFilter.blue: preload("res://Assets/Cursor/flag_blue.png"),
+	ColorFilter.none: preload("res://Assets/Cursor/flag.png"),
+}
+
+var outline_colors = {
+	ColorFilter.red: Color.DEEP_PINK,
+	ColorFilter.green: Color.GREEN_YELLOW,
+	ColorFilter.blue: Color.ROYAL_BLUE,
+	ColorFilter.none: Color.AQUAMARINE,
+}
+
 func command_mode(enable: bool):
 	if enable:
-		Input.set_custom_mouse_cursor(preload("res://Assets/Cursor/flag.png"))
+		Input.set_custom_mouse_cursor(flags[active_color_filter])
 		box_select.process_mode = Node.PROCESS_MODE_DISABLED
 		line_command.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
-		Input.set_custom_mouse_cursor(preload("res://Assets/Cursor/pointer.png"))
+		Input.set_custom_mouse_cursor(pointers[active_color_filter])
 		box_select.process_mode = Node.PROCESS_MODE_INHERIT
 		line_command.process_mode = Node.PROCESS_MODE_DISABLED
 		
@@ -38,11 +59,11 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MASK_RIGHT:
 		clear_selected()
 		command_mode(false)
-	if Input.get_action_strength("Blue"):
+	if event.is_action_pressed("Blue"):
 		set_active_color_filter(ColorFilter.blue)
-	elif Input.get_action_strength("Green"):
+	elif event.is_action_pressed("Green"):
 		set_active_color_filter(ColorFilter.green)
-	elif Input.get_action_strength("Red"):
+	elif event.is_action_pressed("Red"):
 		set_active_color_filter(ColorFilter.red)
 		
 func set_active_color_filter(color: ColorFilter):
@@ -50,6 +71,10 @@ func set_active_color_filter(color: ColorFilter):
 		active_color_filter = ColorFilter.none
 	else:
 		active_color_filter = color
+		
+	clear_selected()
+	command_mode(false)
+	box_select.color = outline_colors[active_color_filter]
 	print(ColorFilter.keys()[active_color_filter])
 		
 func is_valid_color(type: EntityType.TypeEnum) -> bool:
