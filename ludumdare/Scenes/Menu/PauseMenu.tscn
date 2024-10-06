@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwambahbcn6mb"]
+[gd_scene load_steps=4 format=3 uid="uid://cwambahbcn6mb"]
 
+[ext_resource type="FontFile" uid="uid://f0g74o2dp2mv" path="res://Assets/dogica.ttf" id="1_4a4qs"]
 [ext_resource type="Script" path="res://Scripts/pause.gd" id="1_leluo"]
+
+[sub_resource type="Theme" id="Theme_i074i"]
+default_font = ExtResource("1_4a4qs")
+default_font_size = 24
+Label/fonts/font = ExtResource("1_4a4qs")
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_i074i")
 script = ExtResource("1_leluo")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -33,6 +40,8 @@ offset_right = 48.0
 offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
 
 [node name="Resume" type="Button" parent="VBoxContainer"]
 layout_mode = 2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1mptm78glf18"]
 
 [ext_resource type="Script" path="res://Scenes/score.gd" id="1_u60gq"]
-[ext_resource type="FontFile" uid="uid://d2nx2xrfct158" path="res://Assets/dogica.ttf" id="2_3qmy0"]
+[ext_resource type="FontFile" uid="uid://f0g74o2dp2mv" path="res://Assets/dogica.ttf" id="2_3qmy0"]
 
 [node name="Score" type="Control"]
 layout_mode = 3
@@ -14,8 +14,10 @@ script = ExtResource("1_u60gq")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-offset_right = 10.0
-offset_bottom = 23.0
-scale = Vector2(3, 3)
+offset_right = 16.0
+offset_bottom = 14.0
+theme_override_colors/font_outline_color = Color(0.215686, 0.133333, 0.168627, 1)
+theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("2_3qmy0")
+theme_override_font_sizes/font_size = 50
 text = "0"
