@@ -84,7 +84,7 @@ func _on_timer_timeout() -> void:
 			waveIndex += 1 
 	else:
 		if arrayEnemy.size() == 0:
-			maxCount *= 1.3 + 1
+			maxCount += 3 + log(maxCount)
 			print(maxCount)
 			waveIndex += 1
 		if count < maxCount:
