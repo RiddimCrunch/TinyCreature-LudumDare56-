@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6hsh6jyb41hl"]
+
+[ext_resource type="Script" path="res://Scripts/ally.gd" id="1_ds64s"]
+[ext_resource type="Material" uid="uid://br17bjf7skqhr" path="res://Assets/Ally/outline_mat.tres" id="2_60n2i"]
+[ext_resource type="Texture2D" uid="uid://klems1ulpwnt" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4330k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6p1vb"]
+radius = 84.0536
+
+[node name="Ally" type="Node2D" groups=["Gentil"]]
+script = ExtResource("1_ds64s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_60n2i")
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_bttc6")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+disable_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CapsuleShape2D_4330k")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6p1vb")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_6p1vb")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_area_entered"]

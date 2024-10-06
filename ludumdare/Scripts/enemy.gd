@@ -1,4 +1,5 @@
 extends Node2D
+class_name Enemy
 
 var health = 100
 
@@ -12,7 +13,7 @@ var rotating = false
 func _ready() -> void:
 	randomize()
 	modulate = Color(randf(), randf(), randf(), 1.0)
-	targetPosition = Vector2(1152/2, 648/2)
+	targetPosition = get_viewport_rect().get_center()
 
 
 func _process(delta: float) -> void:
@@ -47,3 +48,6 @@ func attackBase():
 	
 func attackGentil():
 	pass
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

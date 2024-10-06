@@ -12,7 +12,9 @@ enum GameState { in_combat, between_combat }
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-		pass
+		is_running = true
+		game_state = GameState.in_combat
+		new_game()
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,7 +25,13 @@ func _process(delta: float) -> void:
 	if game_state == GameState.between_combat:
 		new_game()
 	elif game_state == GameState.in_combat:
-		in_combat()
+		check_win_lose()
+		
+		
+func _input(_event):
+	if Input.get_action_strength("Jump"):
+		$WaveManager.clear_enemies()
+		$WaveManager.start_spawning()
 
 
 func win_round(round: int):
@@ -35,27 +43,21 @@ func lose_round(round: int):
 	pass
 	
 func new_game():
-	$Spawner.spawn(point_counter)
-	$WaveManager.spawnEnemy()
+	$Hq.spawn(point_counter)
+	$WaveManager.start_spawning()
 	current_round += 1
 	game_state = GameState.in_combat
 	
-func in_combat():
+func check_win_lose():
 	var enemies = $WaveManager.arrayEnemy
-	
-	for ally in allies:
-		print(ally)
-	for enemy in enemies:
-		print(enemy)
 	
 	if (hq_health <= 0):
 		lose_round(current_round)
-	elif (enemies.is_empty()):
+	elif (enemies.is_empty() and !$WaveManager.is_spawning):
 		win_round(current_round)
 	elif (allies.is_empty()):
 		lose_round(current_round)
 		
 	
-	
-	 
-	
+func _on_hq_creature_spawned(creature: Ally) -> void:
+	allies.append(creature) # Replace with function body.

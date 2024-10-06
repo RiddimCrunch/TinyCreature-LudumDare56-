@@ -1,25 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://vey6qwwf4p7n"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_64sag"]
-[ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_3rx47"]
-[ext_resource type="PackedScene" uid="uid://ciu47nubcnclx" path="res://Scenes/creature.tscn" id="3_iipdw"]
+[ext_resource type="PackedScene" uid="uid://bc70i730qk1bk" path="res://Scenes/HQ.tscn" id="3_shu7y"]
 [ext_resource type="PackedScene" uid="uid://de68th1agn6x8" path="res://Scenes/WaveManager.tscn" id="4_w1avw"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y2jou"]
+[ext_resource type="PackedScene" uid="uid://b6hsh6jyb41hl" path="res://Scenes/Ally.tscn" id="4_yjy8p"]
+[ext_resource type="PackedScene" uid="uid://dtxiabugsb33o" path="res://Scenes/CreatureCommander.tscn" id="5_yqakn"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_64sag")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(949, 602)
-scale = Vector2(182.625, 175.125)
-texture = SubResource("PlaceholderTexture2D_y2jou")
-
-[node name="Spawner" type="Node2D" parent="."]
-script = ExtResource("2_3rx47")
-creature_scene = ExtResource("3_iipdw")
-
-[node name="SpawnerPosition" type="Marker2D" parent="Spawner"]
-position = Vector2(950, 600)
-
 [node name="WaveManager" parent="." instance=ExtResource("4_w1avw")]
+
+[node name="Hq" parent="." instance=ExtResource("3_shu7y")]
+creature_scene = ExtResource("4_yjy8p")
+
+[node name="CreatureCommander" parent="." instance=ExtResource("5_yqakn")]
+
+[connection signal="creature_spawned" from="Hq" to="." method="_on_hq_creature_spawned"]

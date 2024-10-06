@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtxiabugsb33o"]
+
+[ext_resource type="Script" path="res://Scripts/creature_commander_manager.gd" id="1_cjqeu"]
+[ext_resource type="Script" path="res://Scripts/box_select.gd" id="2_cv4en"]
+[ext_resource type="Script" path="res://Scripts/line_command.gd" id="3_kot8a"]
+
+[sub_resource type="Curve" id="Curve_2jcma"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.248619, 1), 0.0, 0.0, 0, 0, Vector2(0.502762, 1), 0.0, 0.0, 0, 0, Vector2(0.756906, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[node name="CreatureCommander" type="Node2D"]
+script = ExtResource("1_cjqeu")
+
+[node name="BoxSelect" type="Node2D" parent="."]
+script = ExtResource("2_cv4en")
+
+[node name="LineCommand" type="Line2D" parent="."]
+width_curve = SubResource("Curve_2jcma")
+script = ExtResource("3_kot8a")
+
+[connection signal="selection_done" from="BoxSelect" to="." method="_on_box_select_selection_done"]
+[connection signal="command_done" from="LineCommand" to="." method="_on_line_command_command_done"]
