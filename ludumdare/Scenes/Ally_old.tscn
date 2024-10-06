@@ -1,18 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2lqxjgjfhou5"]
+[gd_scene load_steps=4 format=3 uid="uid://b6hsh6jyb41hl"]
 
-[ext_resource type="Script" path="res://Scripts/ally.gd" id="1_ds64s"]
 [ext_resource type="Texture2D" uid="uid://vj1dixds2rvu" path="res://Assets/Ally/tile_0108.png" id="2_bttc6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1u5p5"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6p1vb"]
 radius = 84.0536
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_viu7n"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vd8qd"]
 radius = 12.0
 
-[node name="Ally" type="RigidBody2D" groups=["Gentil"]]
-gravity_scale = 0.0
-lock_rotation = true
-script = ExtResource("1_ds64s")
+[node name="Ally_old" type="Node2D" groups=["Gentil"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.5, 2.5)
@@ -21,13 +17,15 @@ texture = ExtResource("2_bttc6")
 [node name="Detection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
-shape = SubResource("CircleShape2D_1u5p5")
+shape = SubResource("CircleShape2D_6p1vb")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_viu7n")
-debug_color = Color(0, 0.64946, 0.142717, 0.42)
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CapsuleShape2D_vd8qd")
+debug_color = Color(0.396082, 0.609773, 1.92523e-07, 0.42)
 
 [connection signal="area_entered" from="Detection" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

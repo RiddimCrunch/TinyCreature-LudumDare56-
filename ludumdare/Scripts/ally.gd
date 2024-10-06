@@ -1,11 +1,14 @@
-extends Node2D
+extends RigidBody2D
 class_name Ally
 
 var health = 100
 
 var state: AllyState = AllyState.wandering
 
-var moveSpeed = 100
+var move_speed = 100
+var move_response = 10
+var velocity_change = Vector2.ZERO
+
 var target: Vector2
 var target_set = false
 var target_enemy: Enemy = null
@@ -34,11 +37,12 @@ func _process(delta: float) -> void:
 			
 			
 func cmd_set_target(cmd_target: Vector2, move_state: AllyState):
+	target_set = true
 	target = cmd_target
 	state = move_state
 
 func waiting(_delta: float):
-	pass
+	velocity_change = Vector2.ZERO - linear_velocity
 
 func attack(delta: float):
 	if (target_enemy == null):
@@ -67,13 +71,17 @@ func generate_target_position():
 		generate_target_position()
 	target_set = true
 	
-func move_torward_target(delta: float):
+func _physics_process(delta: float) -> void:
+	apply_central_force(velocity_change * move_response)
+	
+func move_torward_target(delta: float):	
+	
 	var distance = target - position
-	var direction = distance.normalized()
-	#$RigidBody2D.add_constant_force(direction * moveSpeed * delta)
-	position += direction * moveSpeed * delta
+	var target_velocity = distance.normalized() * move_speed
+	velocity_change = target_velocity - linear_velocity
+	
 	var norm = distance.length()
-	if (norm < 0.5):
+	if (norm < 1):
 		target_set = false
 		state = AllyState.waiting
 		if (wait_timer.is_stopped()):
@@ -101,7 +109,4 @@ func _on_collider_area_entered(area: Area2D) -> void:
 		return
 	print("Collision")
 	var enemy : Enemy = area.get_parent()
-	var impulse_strength = 100
-	var angle = $RigidBody2D.rotation
-	$RigidBody2D.apply_central_impulse(Vector2(100, 0) * impulse_strength)
 	enemy.receive_damage(20)
