@@ -90,7 +90,7 @@ func move_torward_target(_delta: float, t: Vector2):
 	velocity_change = target_velocity - linear_velocity
 	
 	var norm = distance.length()
-	if (norm < 2):
+	if (norm < 3):
 		target_set = false
 		state = AllyState.waiting
 		if (wait_timer.is_stopped()):
