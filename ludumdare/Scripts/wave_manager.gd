@@ -42,7 +42,7 @@ func _process(_delta: float) -> void:
 func spawnEnemy() -> void:
 	var enemy = EnemyScene[0].instantiate()
 	enemy.dead.connect(on_dead)
-	enemy.position = SpawnerArray[randi_range(0,7)].position
+	enemy.position = SpawnerArray[randi_range(0,7)].global_position
 	arrayEnemy.append(enemy)
 	add_child(enemy)
 	count += 1
@@ -53,14 +53,15 @@ func on_dead(enemy: Enemy):
 	arrayEnemy.remove_at(index)
 
 func setSpawnerPosition() -> void:
-	SpawnerArray[0].position = Vector2(0, 0)
-	SpawnerArray[1].position = Vector2(1152 /2., 0)
-	SpawnerArray[2].position = Vector2(1152, 0)
-	SpawnerArray[3].position = Vector2(0, 648 / 2.)
-	SpawnerArray[4].position = Vector2(1152, 648 / 2.) 
-	SpawnerArray[5].position = Vector2(0, 648)
-	SpawnerArray[6].position = Vector2(1152 / 2., 648)
-	SpawnerArray[7].position = Vector2(1152, 648)
+	var screen_size = get_viewport().get_visible_rect().size
+	SpawnerArray[0].global_position = Vector2(0, 0)
+	SpawnerArray[1].global_position = Vector2(screen_size.x /2., 0)
+	SpawnerArray[2].global_position = Vector2(screen_size.x, 0)
+	SpawnerArray[3].global_position = Vector2(0, screen_size.y / 2.)
+	SpawnerArray[4].global_position = Vector2(screen_size.x, screen_size.y / 2.) 
+	SpawnerArray[5].global_position = Vector2(0, screen_size.y)
+	SpawnerArray[6].global_position = Vector2(screen_size.x / 2., screen_size.y)
+	SpawnerArray[7].global_position = Vector2(screen_size.x, screen_size.y)
 
 func clear_enemies() -> void:
 	for enemy in arrayEnemy:

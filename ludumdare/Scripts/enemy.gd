@@ -5,7 +5,7 @@ var health = 100
 
 var targetPosition = Vector2()
 var moveSpeed = 50
-var rotationSpeed = 2
+var rotationSpeed = 0.2
 var angle = 0
 var radius =  100
 var rotating = false
