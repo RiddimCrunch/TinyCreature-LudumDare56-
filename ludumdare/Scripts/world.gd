@@ -11,7 +11,7 @@ var green_count = 0
 var blue_count = 0
 
 var game_state = GameState.between_combat
-var hq_health = 500
+var hq_health = 100
 signal dmg_taken(hp: int)
 
 enum GameState { in_combat, between_combat }
@@ -23,6 +23,7 @@ func _ready() -> void:
 		new_game()
 		
 func hq_take_damage(dmg: int):
+	print(hq_health)
 	hq_health -= dmg
 	dmg_taken.emit(hq_health)
 

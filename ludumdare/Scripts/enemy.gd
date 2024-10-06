@@ -35,7 +35,8 @@ func _process(delta: float) -> void:
 		rotate_around_center(delta) 
 		timer += delta
 		if timer > timeout:
-			world.hq_health -= 25
+			timer = 0
+			world.hq_take_damage(5)
 	elif position.distance_to(targetPosition) > radius:
 		move_toward_center(delta) 
 	else:
