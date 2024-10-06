@@ -46,6 +46,7 @@ func _process(delta: float) -> void:
 			
 func cmd_set_target(cmd_target: Vector2, move_state: AllyState):
 	target = cmd_target
+	target_enemy = null
 	state = move_state
 
 func waiting(_delta: float):
@@ -87,23 +88,25 @@ func move_torward_target(delta: float, t: Vector2):
 	velocity_change = target_velocity - linear_velocity
 	
 	var norm = distance.length()
-	if (norm < 3):
+	if (norm < 2):
 		target_set = false
 		state = AllyState.waiting
 		if (wait_timer.is_stopped()):
 			wait_timer.start(5)
 			
 	
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if (!area.get_parent().is_in_group("Mechant")):
-		return
-	var enemy = area.get_parent() 
+func start_combat(enemy: Enemy):
 	if ((target_enemy == null 
 			or (target_enemy.type.type != type.type and enemy.type.type == type.type))
 			and state != AllyState.moving):
 		target_enemy = enemy
 		state = AllyState.in_combat
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if (!area.get_parent().is_in_group("Mechant")):
+		return
+	var enemy = area.get_parent() 
+	start_combat(enemy)
 		
 
 func _on_timer_timeout() -> void:
@@ -113,7 +116,6 @@ func _on_timer_timeout() -> void:
 	
 func receive_damage(dmg: float):
 	health -= dmg
-	print("received %s damage" % dmg)
 	if (health <= 0):
 		die()
 		
@@ -126,8 +128,10 @@ func _on_body_entered(body: Node) -> void:
 		apply_central_impulse(-velocity_change.normalized() * 150)
 		return
 	apply_central_impulse(-velocity_change.normalized() * 750)
-	print("Collision")
+
+	start_combat(body)
 	if body.type.type == type.type:
 		body.receive_damage(20)
 	else:
 		receive_damage(50)
+	

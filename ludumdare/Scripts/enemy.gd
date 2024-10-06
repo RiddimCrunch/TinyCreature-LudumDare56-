@@ -55,7 +55,6 @@ func attackGentil():
 	
 func receive_damage(dmg: float):
 	health -= dmg
-	print("received %s damage" % dmg)
 	if (health <= 0):
 		die()
 		
