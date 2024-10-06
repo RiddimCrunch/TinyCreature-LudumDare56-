@@ -76,7 +76,7 @@ func hideOpenMenu():
 	return pauseMenu.visible
 
 func getWaveIndex():
-	print(waveIndex)
+	return waveIndex
 
 
 func _on_timer_timeout() -> void:
