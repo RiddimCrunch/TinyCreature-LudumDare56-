@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtxiabugsb33o"]
+[gd_scene load_steps=8 format=3 uid="uid://dtxiabugsb33o"]
 
 [ext_resource type="Script" path="res://Scripts/creature_commander_manager.gd" id="1_cjqeu"]
 [ext_resource type="Script" path="res://Scripts/box_select.gd" id="2_cv4en"]
@@ -7,6 +7,15 @@
 [sub_resource type="Curve" id="Curve_2jcma"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.248619, 1), 0.0, 0.0, 0, 0, Vector2(0.502762, 1), 0.0, 0.0, 0, 0, Vector2(0.756906, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3sqb"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y62hg"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5co71"]
+bg_color = Color(0, 0, 1, 1)
 
 [node name="CreatureCommander" type="Node2D"]
 script = ExtResource("1_cjqeu")
@@ -18,5 +27,68 @@ script = ExtResource("2_cv4en")
 width_curve = SubResource("Curve_2jcma")
 script = ExtResource("3_kot8a")
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 104.0
+offset_top = 1098.0
+offset_right = 305.0
+offset_bottom = 1098.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.72, 1.01724)
+theme_override_constants/separation = 20
+
+[node name="ButtonRed" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_b3sqb")
+text = "                "
+
+[node name="ButtonGreen" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y62hg")
+text = "                "
+
+[node name="ButtonBlue" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5co71")
+text = "                "
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
+offset_left = 209.0
+offset_top = 1123.0
+offset_right = 249.0
+offset_bottom = 1163.0
+text = "2"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Control"]
+offset_left = 271.0
+offset_top = 1123.0
+offset_right = 311.0
+offset_bottom = 1163.0
+text = "3"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 1123.0
+offset_right = 184.0
+offset_bottom = 1163.0
+text = "1"
+
 [connection signal="selection_done" from="BoxSelect" to="." method="_on_box_select_selection_done"]
 [connection signal="command_done" from="LineCommand" to="." method="_on_line_command_command_done"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonRed" to="." method="_on_button_red_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonGreen" to="." method="_on_button_green_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonBlue" to="." method="_on_button_blue_pressed"]

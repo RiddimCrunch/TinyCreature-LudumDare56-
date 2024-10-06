@@ -9,6 +9,9 @@ var selected_obj: Array[Ally] = []
 var outline_mat = preload("res://Assets/Ally/outline_mat.tres")
 var blink = preload("res://Assets/Ally/Ally.tres")
 
+enum ColorFilter { red, green, blue, none }
+var active_color_filter = ColorFilter.none
+
 func command_mode(enable: bool):
 	if enable:
 		Input.set_custom_mouse_cursor(preload("res://Assets/Cursor/flag.png"))
@@ -35,6 +38,31 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MASK_RIGHT:
 		clear_selected()
 		command_mode(false)
+	if Input.get_action_strength("Blue"):
+		set_active_color_filter(ColorFilter.blue)
+	elif Input.get_action_strength("Green"):
+		set_active_color_filter(ColorFilter.green)
+	elif Input.get_action_strength("Red"):
+		set_active_color_filter(ColorFilter.red)
+		
+func set_active_color_filter(color: ColorFilter):
+	if active_color_filter == color:
+		active_color_filter = ColorFilter.none
+	else:
+		active_color_filter = color
+	print(ColorFilter.keys()[active_color_filter])
+		
+func is_valid_color(type: EntityType.TypeEnum) -> bool:
+	if (active_color_filter == ColorFilter.none):
+		return true
+	if (active_color_filter == ColorFilter.red and type == EntityType.TypeEnum.red):
+		return true
+	if (active_color_filter == ColorFilter.blue and type == EntityType.TypeEnum.blue):
+		return true
+	if (active_color_filter == ColorFilter.green and type == EntityType.TypeEnum.green):
+		return true
+	return false
+	
 
 func _on_box_select_selection_done(box_start: Vector2, box_end: Vector2) -> void:
 	for a in root.allies:
@@ -44,7 +72,8 @@ func _on_box_select_selection_done(box_start: Vector2, box_end: Vector2) -> void
 		var top_y = box_start.y if box_start.y < box_end.y else box_end.y
 		var bot_y = box_start.y if box_start.y > box_end.y else box_end.y
 		if p.x > top_x and p.y > top_y and p.x < bot_x and p.y < bot_y:
-			selected_obj.append(a)
+			if is_valid_color(a.type.type):
+				selected_obj.append(a)
 	
 	if selected_obj.size() > 0:
 		for s in selected_obj:
@@ -71,3 +100,15 @@ func _on_line_command_command_done(points: PackedVector2Array) -> void:
 			p_i = 0
 	clear_selected()
 	command_mode(false)
+
+
+func _on_button_red_pressed() -> void:
+	set_active_color_filter(ColorFilter.red)
+
+
+func _on_button_green_pressed() -> void:
+	set_active_color_filter(ColorFilter.green)
+
+
+func _on_button_blue_pressed() -> void:
+	set_active_color_filter(ColorFilter.blue)
