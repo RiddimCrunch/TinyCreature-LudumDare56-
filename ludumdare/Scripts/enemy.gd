@@ -4,7 +4,11 @@ class_name Enemy
 var health = 100
 
 var targetPosition = Vector2()
-var moveSpeed = 50
+
+var move_speed = 50
+var move_response = 5
+var velocity_change = Vector2.ZERO
+
 var rotationSpeed = 0.2
 var angle = 0
 var radius =  100
@@ -28,10 +32,14 @@ func _process(delta: float) -> void:
 	else:
 		start_rotating()
 		
+func _physics_process(delta: float) -> void:
+	apply_central_force(velocity_change * move_response)
+		
 func move_toward_center(delta: float) -> void:
 	var target_position_float = Vector2(targetPosition.x, targetPosition.y)
 	var direction = (target_position_float - position).normalized()
-	position += direction * moveSpeed * delta
+	var target_velocity = direction * move_speed
+	velocity_change = target_velocity - linear_velocity
 	
 func rotate_around_center(delta: float) -> void:
 	angle += rotationSpeed * delta
@@ -61,3 +69,9 @@ func receive_damage(dmg: float):
 func die():
 	dead.emit(self)
 	queue_free()
+
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("Gentil"):
+		apply_central_impulse(-body.velocity_change.normalized() * 150)
+		return

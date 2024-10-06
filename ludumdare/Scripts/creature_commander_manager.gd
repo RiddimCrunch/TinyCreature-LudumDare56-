@@ -10,11 +10,11 @@ var outline_mat = preload("res://Assets/Ally/outline_mat.tres")
 
 func command_mode(enable: bool):
 	if enable:
-		Input.set_custom_mouse_cursor(preload("res://Assets/Cursor/Flag.png"))
+		Input.set_custom_mouse_cursor(preload("res://Assets/Cursor/flag.png"))
 		box_select.process_mode = Node.PROCESS_MODE_DISABLED
 		line_command.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
-		Input.set_custom_mouse_cursor(preload("res://Assets/Cursor/Lasso.png"))
+		Input.set_custom_mouse_cursor(preload("res://Assets/Cursor/pointer.png"))
 		box_select.process_mode = Node.PROCESS_MODE_INHERIT
 		line_command.process_mode = Node.PROCESS_MODE_DISABLED
 		
