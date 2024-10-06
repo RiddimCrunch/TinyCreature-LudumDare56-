@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://sj4v2dxei0bh"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_kc7uj"]
-[ext_resource type="Texture2D" uid="uid://nx8k181wb64p" path="res://Assets/Enemy/tile_0109.png" id="1_kh2ko"]
+[ext_resource type="Texture2D" uid="uid://cf0sttoup2l8u" path="res://Assets/Enemy/tile_0109.png" id="1_kh2ko"]
 [ext_resource type="Shader" path="res://Assets/Ally/Hit.gdshader" id="2_kyv7n"]
 [ext_resource type="Script" path="res://Scripts/entity_type.gd" id="3_nisge"]
-[ext_resource type="Texture2D" uid="uid://b2u3s7xdji6mc" path="res://Assets/Enemy/tile_0109_red.png" id="4_5kkfw"]
-[ext_resource type="Texture2D" uid="uid://d8twgsvi2l6v" path="res://Assets/Enemy/tile_0109_green.png" id="5_5jheu"]
-[ext_resource type="Texture2D" uid="uid://bbqdkhvfa4hvr" path="res://Assets/Enemy/tile_0109_blue.png" id="6_bk088"]
+[ext_resource type="Texture2D" uid="uid://npdmrgxtd77t" path="res://Assets/Enemy/tile_0109_red.png" id="4_5kkfw"]
+[ext_resource type="Texture2D" uid="uid://b6c4ajgwknvgv" path="res://Assets/Enemy/tile_0109_green.png" id="5_5jheu"]
+[ext_resource type="Texture2D" uid="uid://cxi5mj6unmr7r" path="res://Assets/Enemy/tile_0109_blue.png" id="6_bk088"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0x4k4"]
 resource_local_to_scene = true

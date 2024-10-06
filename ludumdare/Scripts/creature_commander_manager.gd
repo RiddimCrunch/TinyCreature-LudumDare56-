@@ -54,8 +54,6 @@ func _on_box_select_selection_done(box_start: Vector2, box_end: Vector2) -> void
 func _on_line_command_command_done(points: PackedVector2Array) -> void:
 	var screen_size = get_viewport().get_visible_rect().size
 	var every_p = int(points.size() / selected_obj.size())
-	print(points.size())
-	print(selected_obj.size())
 	var c = 0
 	var p_i = 0
 	var obj_i = 0
