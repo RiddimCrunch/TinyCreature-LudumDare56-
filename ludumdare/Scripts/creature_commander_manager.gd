@@ -10,9 +10,11 @@ var outline_mat = preload("res://Assets/Ally/outline_mat.tres")
 
 func command_mode(enable: bool):
 	if enable:
+		Input.set_custom_mouse_cursor(preload("res://Assets/Cursor/Flag.png"))
 		box_select.process_mode = Node.PROCESS_MODE_DISABLED
 		line_command.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
+		Input.set_custom_mouse_cursor(preload("res://Assets/Cursor/Lasso.png"))
 		box_select.process_mode = Node.PROCESS_MODE_INHERIT
 		line_command.process_mode = Node.PROCESS_MODE_DISABLED
 		
@@ -48,6 +50,8 @@ func _on_box_select_selection_done(box_start: Vector2, box_end: Vector2) -> void
 func _on_line_command_command_done(points: PackedVector2Array) -> void:
 	var screen_size = get_viewport().get_visible_rect().size
 	var every_p = int(points.size() / selected_obj.size())
+	print(points.size())
+	print(selected_obj.size())
 	var c = 0
 	var p_i = 0
 	var obj_i = 0

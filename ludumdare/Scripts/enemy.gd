@@ -34,7 +34,6 @@ func move_toward_center(delta: float) -> void:
 	position += direction * moveSpeed * delta
 	
 func rotate_around_center(delta: float) -> void:
-	return
 	angle += rotationSpeed * delta
 	position.x = targetPosition.x + cos(angle) * radius
 	position.y = targetPosition.y + sin(angle) * radius
@@ -64,9 +63,9 @@ func die():
 	queue_free()
 	dead.emit(self)
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	pass # Replace with function body.
 
 
-func _on_rigid_body_2d_body_entered(body: Node) -> void:
+func _on_rigid_body_2d_body_entered(_body: Node) -> void:
 	pass # Replace with function body.

@@ -18,7 +18,7 @@ func _ready() -> void:
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not is_running:
 		pass
 	
@@ -34,12 +34,12 @@ func _input(_event):
 		$WaveManager.start_spawning()
 
 
-func win_round(round: int):
-	var gained_points = 20 * round + 200	
+func win_round(manche: int):
+	var gained_points = 20 * manche + 200	
 	point_counter += gained_points
 	game_state = GameState.between_combat
 	
-func lose_round(round: int):
+func lose_round(_manche: int):
 	pass
 	
 func new_game():

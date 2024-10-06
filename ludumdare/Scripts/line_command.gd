@@ -17,7 +17,7 @@ func _input(event: InputEvent) -> void:
 			command_done.emit(points)
 			clear_points()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if dragging and get_point_count() <= line_length:
 		var p = get_global_mouse_position()
 		var length = (p - get_point_position(get_point_count()-1)).length()

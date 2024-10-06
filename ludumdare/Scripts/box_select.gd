@@ -26,7 +26,7 @@ func _draw() -> void:
 	draw_dashed_line(Vector2(start.x, end.y), end, c, 2)
 	draw_dashed_line(Vector2(end.x, start.y), end, c, 2)
 		
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if dragging:
 		end = get_global_mouse_position()
 		queue_redraw()

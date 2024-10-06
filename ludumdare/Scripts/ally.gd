@@ -37,7 +37,7 @@ func cmd_set_target(cmd_target: Vector2, move_state: AllyState):
 	target = cmd_target
 	state = move_state
 
-func waiting(delta: float):
+func waiting(_delta: float):
 	pass
 
 func attack(delta: float):
@@ -59,7 +59,7 @@ func wander(delta: float):
 		
 	
 func generate_target_position():
-	var angle = randi_range(0, 2 * PI)
+	var angle = randi_range(0, (int)(2 * PI))
 	var radius = randi_range(100, 500)
 	target.x = position.x + cos(angle) * radius
 	target.y = position.y + sin(angle) * radius
