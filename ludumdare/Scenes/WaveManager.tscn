@@ -28,6 +28,8 @@ SpawnerArray = [NodePath("SpawnPoint/Spawn"), NodePath("SpawnPoint/Spawn1"), Nod
 [node name="Spawn7" type="Node2D" parent="SpawnPoint"]
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_ci3y4")]
+visible = false
+z_index = 1
 
 [node name="Timer" type="Timer" parent="."]
 
