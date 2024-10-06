@@ -53,7 +53,7 @@ func win_round(manche: int):
 	game_state = GameState.between_combat
 	
 func lose_round(_manche: int):
-	pass
+	get_tree().change_scene_to_file("res://Scenes/Menu/GameOverMenu.tscn")
 	
 func new_game():
 	$Hq.spawn(point_counter)
