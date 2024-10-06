@@ -134,7 +134,6 @@ func _on_body_entered(body: Node) -> void:
 	start_combat(body)
 	if body.type.type == type.type:
 		body.receive_damage(20)
-		flash()
 	else:
 		receive_damage(50)
 		flash()

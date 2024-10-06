@@ -1,11 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://sj4v2dxei0bh"]
+[gd_scene load_steps=14 format=3 uid="uid://sj4v2dxei0bh"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_kc7uj"]
-[ext_resource type="Texture2D" uid="uid://nx8k181wb64p" path="res://Assets/Enemy/tile_0109.png" id="1_kh2ko"]
+[ext_resource type="Texture2D" uid="uid://cf0sttoup2l8u" path="res://Assets/Enemy/tile_0109.png" id="1_kh2ko"]
+[ext_resource type="Shader" path="res://Assets/Ally/Hit.gdshader" id="2_kyv7n"]
 [ext_resource type="Script" path="res://Scripts/entity_type.gd" id="3_nisge"]
-[ext_resource type="Texture2D" uid="uid://b2u3s7xdji6mc" path="res://Assets/Enemy/tile_0109_red.png" id="4_5kkfw"]
-[ext_resource type="Texture2D" uid="uid://d8twgsvi2l6v" path="res://Assets/Enemy/tile_0109_green.png" id="5_5jheu"]
-[ext_resource type="Texture2D" uid="uid://bbqdkhvfa4hvr" path="res://Assets/Enemy/tile_0109_blue.png" id="6_bk088"]
+[ext_resource type="Texture2D" uid="uid://npdmrgxtd77t" path="res://Assets/Enemy/tile_0109_red.png" id="4_5kkfw"]
+[ext_resource type="Texture2D" uid="uid://b6c4ajgwknvgv" path="res://Assets/Enemy/tile_0109_green.png" id="5_5jheu"]
+[ext_resource type="Texture2D" uid="uid://cxi5mj6unmr7r" path="res://Assets/Enemy/tile_0109_blue.png" id="6_bk088"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0x4k4"]
+resource_local_to_scene = true
+shader = ExtResource("2_kyv7n")
+shader_parameter/flash_color = Vector4(1, 0, 0, 0)
+shader_parameter/flash_modifer = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fa547"]
 radius = 26.0
@@ -13,6 +20,21 @@ height = 74.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_si3x0"]
 radius = 84.0536
+
+[sub_resource type="Animation" id="Animation_wxfmn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.15708]
+}
 
 [sub_resource type="Animation" id="Animation_74dnj"]
 resource_name = "slow_wiggle_walk"
@@ -31,21 +53,6 @@ tracks/0/keys = {
 "values": [-0.15708, 0.15708]
 }
 
-[sub_resource type="Animation" id="Animation_wxfmn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.15708]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dxvcn"]
 _data = {
 "RESET": SubResource("Animation_wxfmn"),
@@ -60,6 +67,7 @@ max_contacts_reported = 100
 script = ExtResource("1_kc7uj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0x4k4")
 position = Vector2(0, -36)
 rotation = -0.15708
 scale = Vector2(4.5, 4.5)
@@ -89,4 +97,8 @@ type_sprite = {
 2: ExtResource("6_bk088")
 }
 
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

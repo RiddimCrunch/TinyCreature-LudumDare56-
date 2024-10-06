@@ -18,7 +18,11 @@ var rotating = false
 
 signal dead(enemy: Enemy)
 
+@onready var sprite = $Sprite2D
+@onready var flashTimer = $FlashTimer
+
 func _ready() -> void:
+	sprite.material.set_shader_parameter("flash_modifer", 0)
 	randomize()
 	type.change_type(randi_range(0,EntityType.TypeEnum.size()-1))
 	targetPosition = get_viewport_rect().get_center()
@@ -63,6 +67,7 @@ func attackGentil():
 	
 func receive_damage(dmg: float):
 	health -= dmg
+	flash()
 	if (health <= 0):
 		die()
 		
@@ -75,3 +80,13 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Gentil"):
 		apply_central_impulse(-body.velocity_change.normalized() * 150)
 		return
+
+func flash():
+	sprite.material.set_shader_parameter("flash_modifer", 0.5)
+	flashTimer.start()
+	
+
+
+func _on_flash_timer_timeout() -> void:
+	sprite.material.set_shader_parameter("flash_modifer", 0)
+	flashTimer.stop()
