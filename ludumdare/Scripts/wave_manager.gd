@@ -27,10 +27,13 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Escape"):
 		if hideOpenMenu() == true:
+# Si un autre menu était ouvert, on le cache et on désactive la pause
 			pauseMenu.hide()
-		else:
-			pauseMenu.show()
-			
+			get_tree().paused = false
+	else:
+		if pauseMenu.visible:
+			pauseMenu.hide()
+			get_tree().paused = false
 func start_spawning():
 	if (!is_spawning):
 		timer.start(1)
