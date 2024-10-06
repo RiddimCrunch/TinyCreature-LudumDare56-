@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		AllyState.in_combat:
 			attack(delta)
 		AllyState.moving_and_looking:
-			pass
+			move_torward_target(delta)
 		AllyState.moving:
 			move_torward_target(delta)
 		AllyState.waiting:
@@ -36,7 +36,6 @@ func _process(delta: float) -> void:
 func cmd_set_target(cmd_target: Vector2, move_state: AllyState):
 	target = cmd_target
 	state = move_state
-			
 
 func waiting(delta: float):
 	pass
@@ -68,19 +67,17 @@ func generate_target_position():
 		generate_target_position()
 	target_set = true
 	
-func move_and_look():
-	pass
-	
 func move_torward_target(delta: float):
 	var distance = target - position
 	var direction = distance.normalized()
-	position += (direction * delta * moveSpeed)
+	position += direction * moveSpeed * delta
 	var norm = distance.length()
-	if (norm < 0.5 and state == AllyState.wandering):
+	if (norm < 0.5):
 		target_set = false
 		state = AllyState.waiting
 		if (wait_timer.is_stopped()):
 			wait_timer.start(2)
+			
 	
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -96,3 +93,10 @@ func _on_timer_timeout() -> void:
 	if (state == AllyState.waiting):
 		state = AllyState.wandering
 	wait_timer.stop()
+
+
+func _on_rigid_body_2d_body_entered(body: Node) -> void:
+	if (!body.get_parent().is_in_group("Mechant")):
+		return
+	var enemy = body.get_parent()
+	print("Hit enemy")

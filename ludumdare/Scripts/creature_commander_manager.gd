@@ -53,7 +53,7 @@ func _on_line_command_command_done(points: PackedVector2Array) -> void:
 	var obj_i = 0
 	while obj_i < selected_obj.size():
 		if c > every_p:
-			selected_obj[obj_i].cmd_set_target(points[p_i].clamp(Vector2.ZERO, screen_size), Ally.AllyState.moving)
+			selected_obj[obj_i].cmd_set_target(points[p_i].clamp(Vector2.ZERO, screen_size), Ally.AllyState.moving_and_looking)
 			c = 0
 			obj_i += 1
 			
