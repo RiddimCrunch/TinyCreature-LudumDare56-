@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c2lqxjgjfhou5" path="res://Scenes/Ally.tscn" id="4_yjy8p"]
 [ext_resource type="PackedScene" uid="uid://dtxiabugsb33o" path="res://Scenes/CreatureCommander.tscn" id="5_yqakn"]
 [ext_resource type="PackedScene" uid="uid://dboiu24tm7lb8" path="res://Scenes/HpBar.tscn" id="7_0hvqx"]
-[ext_resource type="PackedScene" path="res://Scenes/score.tscn" id="8_vkcuy"]
+[ext_resource type="PackedScene" uid="uid://d1mptm78glf18" path="res://Scenes/score.tscn" id="8_vkcuy"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_64sag")
