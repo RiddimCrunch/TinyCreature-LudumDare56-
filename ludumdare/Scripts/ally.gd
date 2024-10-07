@@ -25,9 +25,11 @@ signal dead(enemy: Ally)
 enum AllyState { in_combat, wandering, moving_and_looking, moving, waiting }
 
 func _ready() -> void:
-	pass
+	rect = Rect2(Vector2.ZERO-Vector2(100,100), get_viewport().get_visible_rect().size+Vector2(100,100))
 
 func _process(delta: float) -> void:
+	check_outside()
+	
 	match state:
 		AllyState.wandering:
 			wander(delta)
@@ -76,7 +78,7 @@ func generate_target_position():
 	var radius = randi_range(10, 200)
 	target.x = position.x + cos(angle) * radius
 	target.y = position.y + sin(angle) * radius
-	if (!get_viewport_rect().has_point(target)):
+	if (!get_viewport().get_visible_rect().has_point(target)):
 		generate_target_position()
 	target_set = true
 	
@@ -125,6 +127,11 @@ func receive_damage(dmg: float):
 func die():
 	dead.emit(self)
 	queue_free()
+
+var rect : Rect2
+func check_outside():
+	if !rect.has_point(global_position):
+		die()
 
 func _on_body_entered(body: Node) -> void:
 	if (!body.is_in_group("Mechant")):
