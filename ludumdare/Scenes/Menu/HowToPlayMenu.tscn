@@ -80,13 +80,13 @@ theme_override_font_sizes/normal_font_size = 16
 text = "- big monsters will try to destroy your base
 
 
-- big monsters are weakest against the same color of tiny monster
+- big monsters are weakest against the same color of tiny monsters, attack wisely !
 
 
 -You will gain score and new allies will spawn at the end of each round
 
 
--survive the highest amount of round possible "
+-survive the highest amount of rounds possible "
 fit_content = true
 
 [node name="Instruction1" type="RichTextLabel" parent="."]
