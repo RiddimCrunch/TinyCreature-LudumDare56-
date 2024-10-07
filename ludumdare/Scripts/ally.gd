@@ -135,6 +135,7 @@ func _on_body_entered(body: Node) -> void:
 	if body.type.type == type.type:
 		body.receive_damage(20)
 	else:
+		body.receive_damage(10)
 		receive_damage(50)
 		flash()
 	

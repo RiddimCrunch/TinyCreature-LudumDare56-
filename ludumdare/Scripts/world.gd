@@ -1,7 +1,8 @@
 extends Node2D
 
 
-var point_counter = 0
+var current_points = 600
+var total_points = 0
 var current_round = 0
 var is_running = true
 var allies = []
@@ -17,6 +18,7 @@ signal dmg_taken(hp: int)
 enum GameState { in_combat, between_combat }
 
 @onready var score = $Score
+@onready var round = $Round
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,18 +49,20 @@ func _input(_event):
 
 
 func win_round(manche: int):
-	var gained_points = 20 * manche + 200	
-	point_counter += gained_points
-	score.setLabel(point_counter)
+	var gained_points = 100 * manche + 300	
+	current_points += gained_points
+	total_points += gained_points
+	score.set_label(total_points)
 	game_state = GameState.between_combat
 	
 func lose_round(_manche: int):
 	get_tree().change_scene_to_file("res://Scenes/Menu/GameOverMenu.tscn")
 	
 func new_game():
-	$Hq.spawn(point_counter)
+	current_points = $Hq.spawn(current_points)
 	$WaveManager.start_spawning()
 	current_round += 1
+	round.set_label("Round %s" % current_round)
 	game_state = GameState.in_combat
 	
 func check_win_lose():
