@@ -127,11 +127,8 @@ func _on_timer_timeout() -> void:
 	
 func receive_damage(dmg: float):
 	health -= dmg
-<<<<<<< HEAD
 	$AudioStreamPlayer2D.play()
-=======
 	flash()
->>>>>>> 83be5cb68aad9440478e591ed0e8c6123499c237
 	if (health <= 0):
 		die()
 		
