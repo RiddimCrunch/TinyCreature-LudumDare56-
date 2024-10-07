@@ -64,7 +64,10 @@ grow_vertical = 1
 script = ExtResource("9_27bkr")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+<<<<<<< HEAD
 stream = ExtResource("10_8ds0i")
+=======
+>>>>>>> 83be5cb68aad9440478e591ed0e8c6123499c237
 
 [connection signal="dmg_taken" from="." to="ProgressBar" method="_on_dmg_taken"]
 [connection signal="creature_spawned" from="Hq" to="." method="_on_hq_creature_spawned"]

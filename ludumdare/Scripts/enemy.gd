@@ -27,10 +27,18 @@ func _ready() -> void:
 	type.change_type(randi_range(0,EntityType.TypeEnum.size()-1))
 	targetPosition = get_viewport_rect().get_center()
 	world = find_parent("World")
+	rect = Rect2(Vector2.ZERO-Vector2(100,100), get_viewport().get_visible_rect().size+Vector2(100,100))
+	
+var rect : Rect2
+func check_outside():
+	if !rect.has_point(global_position):
+		die()
 
 var timer = 0
 var timeout = 1
 func _process(delta: float) -> void:
+	check_outside()
+	
 	if rotating:
 		rotate_around_center(delta) 
 		timer += delta

@@ -22,12 +22,17 @@ var target_enemy: Enemy = null
 
 signal dead(enemy: Ally)
 
-enum AllyState { in_combat, wandering, moving_and_looking, moving, waiting }
+enum AllyState { in_combat, wandering, moving_and_looking, moving, waiting, dying }
 
 func _ready() -> void:
-	pass
+	rect = Rect2(Vector2.ZERO-Vector2(100,100), get_viewport().get_visible_rect().size+Vector2(100,100))
+	sprite.apply_scale(Vector2(0.1, 0.1))
 
 func _process(delta: float) -> void:
+	check_outside()
+	if (sprite.scale.x < 2.4 and state != AllyState.dying):
+		sprite.scale += Vector2(0.2, 0.2)
+	
 	match state:
 		AllyState.wandering:
 			wander(delta)
@@ -39,11 +44,15 @@ func _process(delta: float) -> void:
 			move_torward_target(delta, target)
 		AllyState.waiting:
 			waiting(delta)
+		AllyState.dying:
+			die()
 			
 	if state == AllyState.waiting and anim.is_playing():
 		anim.play("RESET")
 	elif not anim.is_playing():
 		anim.play("wiggle_walk")
+		
+	
 			
 			
 func cmd_set_target(cmd_target: Vector2, move_state: AllyState):
@@ -76,7 +85,7 @@ func generate_target_position():
 	var radius = randi_range(10, 200)
 	target.x = position.x + cos(angle) * radius
 	target.y = position.y + sin(angle) * radius
-	if (!get_viewport_rect().has_point(target)):
+	if (!get_viewport().get_visible_rect().has_point(target)):
 		generate_target_position()
 	target_set = true
 	
@@ -118,13 +127,23 @@ func _on_timer_timeout() -> void:
 	
 func receive_damage(dmg: float):
 	health -= dmg
+<<<<<<< HEAD
 	$AudioStreamPlayer2D.play()
+=======
+	flash()
+>>>>>>> 83be5cb68aad9440478e591ed0e8c6123499c237
 	if (health <= 0):
 		die()
 		
 func die():
+	state = AllyState.dying
 	dead.emit(self)
 	queue_free()
+
+var rect : Rect2
+func check_outside():
+	if !rect.has_point(global_position):
+		die()
 
 func _on_body_entered(body: Node) -> void:
 	if (!body.is_in_group("Mechant")):
@@ -135,10 +154,10 @@ func _on_body_entered(body: Node) -> void:
 	start_combat(body)
 	if body.type.type == type.type:
 		body.receive_damage(20)
+		receive_damage(5)
 	else:
-		body.receive_damage(10)
+		body.receive_damage(5)
 		receive_damage(50)
-		flash()
 	
 func flash():
 	sprite.material.set_shader_parameter("flash_modifer", 1)

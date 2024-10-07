@@ -49,7 +49,7 @@ func _input(_event):
 
 
 func win_round(manche: int):
-	var gained_points = 100 * manche + 300	
+	var gained_points = clamp((100 * manche), 0, 700) + 300	
 	current_points += gained_points
 	total_points += gained_points
 	score.set_label(total_points)

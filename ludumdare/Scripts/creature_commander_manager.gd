@@ -75,7 +75,6 @@ func set_active_color_filter(color: ColorFilter):
 	clear_selected()
 	command_mode(false)
 	box_select.color = outline_colors[active_color_filter]
-	print(ColorFilter.keys()[active_color_filter])
 		
 func is_valid_color(type: EntityType.TypeEnum) -> bool:
 	if (active_color_filter == ColorFilter.none):

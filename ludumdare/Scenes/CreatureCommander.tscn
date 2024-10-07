@@ -1,21 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtxiabugsb33o"]
+[gd_scene load_steps=9 format=3 uid="uid://dtxiabugsb33o"]
 
 [ext_resource type="Script" path="res://Scripts/creature_commander_manager.gd" id="1_cjqeu"]
 [ext_resource type="Script" path="res://Scripts/box_select.gd" id="2_cv4en"]
 [ext_resource type="Script" path="res://Scripts/line_command.gd" id="3_kot8a"]
+[ext_resource type="StyleBox" uid="uid://b20hkma37fpg4" path="res://Assets/box_style.tres" id="4_m2h0o"]
+[ext_resource type="FontFile" uid="uid://f0g74o2dp2mv" path="res://Assets/dogica.ttf" id="5_ni680"]
 
 [sub_resource type="Curve" id="Curve_2jcma"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.248619, 1), 0.0, 0.0, 0, 0, Vector2(0.502762, 1), 0.0, 0.0, 0, 0, Vector2(0.756906, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3sqb"]
-bg_color = Color(1, 0, 0, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y62hg"]
-bg_color = Color(0, 1, 0, 1)
+bg_color = Color(0.298039, 0.862745, 0.266667, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5co71"]
-bg_color = Color(0, 0, 1, 1)
+bg_color = Color(0.235294, 0.392157, 0.847059, 1)
 
 [node name="CreatureCommander" type="Node2D"]
 script = ExtResource("1_cjqeu")
@@ -41,10 +40,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 104.0
-offset_top = 1098.0
-offset_right = 305.0
-offset_bottom = 1098.0
+offset_left = 40.0
+offset_top = 1108.0
+offset_right = 241.0
+offset_bottom = 1108.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.72, 1.01724)
@@ -53,45 +52,85 @@ theme_override_constants/separation = 20
 [node name="ButtonRed" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_b3sqb")
+theme_override_styles/focus = ExtResource("4_m2h0o")
+theme_override_styles/disabled_mirrored = ExtResource("4_m2h0o")
+theme_override_styles/disabled = ExtResource("4_m2h0o")
+theme_override_styles/hover_pressed_mirrored = ExtResource("4_m2h0o")
+theme_override_styles/hover_pressed = ExtResource("4_m2h0o")
+theme_override_styles/hover_mirrored = ExtResource("4_m2h0o")
+theme_override_styles/hover = ExtResource("4_m2h0o")
+theme_override_styles/pressed_mirrored = ExtResource("4_m2h0o")
+theme_override_styles/pressed = ExtResource("4_m2h0o")
+theme_override_styles/normal_mirrored = ExtResource("4_m2h0o")
+theme_override_styles/normal = ExtResource("4_m2h0o")
 text = "                "
 
 [node name="ButtonGreen" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_y62hg")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_y62hg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_y62hg")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_y62hg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_y62hg")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_y62hg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y62hg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_y62hg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y62hg")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_y62hg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_y62hg")
 text = "                "
 
 [node name="ButtonBlue" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_5co71")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_5co71")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5co71")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_5co71")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_5co71")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_5co71")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5co71")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5co71")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5co71")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_5co71")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5co71")
 text = "                "
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
-layout_mode = 0
-offset_left = 209.0
-offset_top = 1123.0
-offset_right = 249.0
-offset_bottom = 1163.0
-text = "2"
+[node name="RichTextLabel4" type="RichTextLabel" parent="Control"]
+offset_left = 167.0
+offset_top = 1108.0
+offset_right = 207.0
+offset_bottom = 1148.0
+theme_override_colors/font_outline_color = Color(0.215686, 0.133333, 0.168627, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("5_ni680")
+text = "
+ 3"
+scroll_active = false
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="Control"]
-layout_mode = 0
-offset_left = 271.0
-offset_top = 1123.0
-offset_right = 311.0
-offset_bottom = 1163.0
-text = "3"
+offset_left = 42.0
+offset_top = 1108.0
+offset_right = 82.0
+offset_bottom = 1148.0
+theme_override_colors/font_outline_color = Color(0.215686, 0.133333, 0.168627, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("5_ni680")
+text = "
+ 1"
+scroll_active = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 1123.0
-offset_right = 184.0
-offset_bottom = 1163.0
-text = "1"
+offset_left = 104.0
+offset_top = 1108.0
+offset_right = 144.0
+offset_bottom = 1148.0
+theme_override_colors/font_outline_color = Color(0.215686, 0.133333, 0.168627, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("5_ni680")
+text = "
+ 2"
+scroll_active = false
 
 [connection signal="selection_done" from="BoxSelect" to="." method="_on_box_select_selection_done"]
 [connection signal="command_done" from="LineCommand" to="." method="_on_line_command_command_done"]
-[connection signal="pressed" from="Control/HBoxContainer/ButtonRed" to="." method="_on_button_red_pressed"]
-[connection signal="pressed" from="Control/HBoxContainer/ButtonGreen" to="." method="_on_button_green_pressed"]
-[connection signal="pressed" from="Control/HBoxContainer/ButtonBlue" to="." method="_on_button_blue_pressed"]
