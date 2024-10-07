@@ -22,13 +22,16 @@ var target_enemy: Enemy = null
 
 signal dead(enemy: Ally)
 
-enum AllyState { in_combat, wandering, moving_and_looking, moving, waiting }
+enum AllyState { in_combat, wandering, moving_and_looking, moving, waiting, dying }
 
 func _ready() -> void:
 	rect = Rect2(Vector2.ZERO-Vector2(100,100), get_viewport().get_visible_rect().size+Vector2(100,100))
+	sprite.apply_scale(Vector2(0.1, 0.1))
 
 func _process(delta: float) -> void:
 	check_outside()
+	if (sprite.scale.x < 2.4 and state != AllyState.dying):
+		sprite.scale += Vector2(0.2, 0.2)
 	
 	match state:
 		AllyState.wandering:
@@ -41,11 +44,15 @@ func _process(delta: float) -> void:
 			move_torward_target(delta, target)
 		AllyState.waiting:
 			waiting(delta)
+		AllyState.dying:
+			die()
 			
 	if state == AllyState.waiting and anim.is_playing():
 		anim.play("RESET")
 	elif not anim.is_playing():
 		anim.play("wiggle_walk")
+		
+	
 			
 			
 func cmd_set_target(cmd_target: Vector2, move_state: AllyState):
@@ -125,6 +132,7 @@ func receive_damage(dmg: float):
 		die()
 		
 func die():
+	state = AllyState.dying
 	dead.emit(self)
 	queue_free()
 
