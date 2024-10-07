@@ -118,6 +118,7 @@ func _on_timer_timeout() -> void:
 	
 func receive_damage(dmg: float):
 	health -= dmg
+	flash()
 	if (health <= 0):
 		die()
 		
@@ -134,10 +135,10 @@ func _on_body_entered(body: Node) -> void:
 	start_combat(body)
 	if body.type.type == type.type:
 		body.receive_damage(20)
+		receive_damage(5)
 	else:
-		body.receive_damage(10)
+		body.receive_damage(5)
 		receive_damage(50)
-		flash()
 	
 func flash():
 	sprite.material.set_shader_parameter("flash_modifer", 1)

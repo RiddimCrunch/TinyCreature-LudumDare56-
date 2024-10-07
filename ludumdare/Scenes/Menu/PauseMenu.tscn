@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwambahbcn6mb"]
 
-[ext_resource type="FontFile" uid="uid://d2nx2xrfct158" path="res://Assets/dogica.ttf" id="1_4a4qs"]
+[ext_resource type="FontFile" uid="uid://bvx4povnf1ch" path="res://Assets/dogica.ttf" id="1_4a4qs"]
 [ext_resource type="Script" path="res://Scripts/pause.gd" id="1_leluo"]
 
 [sub_resource type="Theme" id="Theme_i074i"]
