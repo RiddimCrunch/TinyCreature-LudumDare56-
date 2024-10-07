@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d8twgsvi2l6v" path="res://Assets/Enemy/tile_0109_green.png" id="5_elso0"]
 [ext_resource type="Texture2D" uid="uid://b2u3s7xdji6mc" path="res://Assets/Enemy/tile_0109_red.png" id="6_biddk"]
 [ext_resource type="Texture2D" uid="uid://nx8k181wb64p" path="res://Assets/Enemy/tile_0109.png" id="7_03xio"]
-[ext_resource type="AudioStream" uid="uid://bnipscop6g728" path="res://Sound/Let's Bounce - Dance Contest  Club Penguin OST.mp3" id="8_md21g"]
+[ext_resource type="AudioStream" uid="uid://1jhyr0j0pyd6" path="res://Sound/Penguin Band Boogie (Silly to Funky) - Dance-A-Thon, Dance Contest  Club Penguin OST.mp3" id="8_2ot1m"]
 
 [sub_resource type="Theme" id="Theme_ha8k0"]
 default_font = ExtResource("1_p1skn")
@@ -94,8 +94,8 @@ scale = Vector2(5, 5)
 texture = ExtResource("7_03xio")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_md21g")
-volume_db = -5.0
+stream = ExtResource("8_2ot1m")
+volume_db = -7.0
 autoplay = true
 parameters/looping = true
 
