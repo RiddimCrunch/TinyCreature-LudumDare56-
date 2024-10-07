@@ -40,16 +40,10 @@ func _process(_delta: float) -> void:
 		new_game()
 	elif game_state == GameState.in_combat:
 		check_win_lose()
-		
-		
-func _input(_event):
-	if Input.get_action_strength("Jump"):
-		$WaveManager.clear_enemies()
-		$WaveManager.start_spawning()
 
 
 func win_round(manche: int):
-	var gained_points = clamp((100 * manche), 0, 700) + 300	
+	var gained_points = 100 * manche + 300	
 	current_points += gained_points
 	total_points += gained_points
 	score.set_label(total_points)
@@ -59,11 +53,11 @@ func lose_round(_manche: int):
 	get_tree().change_scene_to_file("res://Scenes/Menu/GameOverMenu.tscn")
 	
 func new_game():
+	game_state = GameState.in_combat
 	current_points = $Hq.spawn(current_points)
 	$WaveManager.start_spawning()
 	current_round += 1
 	round.set_label("Round %s" % current_round)
-	game_state = GameState.in_combat
 	
 func check_win_lose():
 	var enemies = $WaveManager.arrayEnemy

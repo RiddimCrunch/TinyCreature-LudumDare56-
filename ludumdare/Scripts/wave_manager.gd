@@ -36,6 +36,10 @@ func _input(event: InputEvent) -> void:
 			
 func start_spawning():
 	if (!is_spawning):
+		count = 0
+		maxCount += 3 + log(maxCount)
+		print(maxCount)
+		waveIndex += 1
 		timer.start(1.5)
 		is_spawning = true
 		
@@ -80,19 +84,9 @@ func getWaveIndex():
 
 
 func _on_timer_timeout() -> void:
-	if waveIndex == 0: 
-		if count < maxCount:
-			spawnEnemy()
-			count += 1
-			waveIndex += 1 
-	else:
-		if arrayEnemy.size() == 0:
-			maxCount += 3 + log(maxCount)
-			print(maxCount)
-			waveIndex += 1
-		if count < maxCount:
-			spawnEnemy()
-		elif count >= maxCount:
-			timer.stop()
-			is_spawning = false
+	if count < maxCount:
+		spawnEnemy()
+	elif count >= maxCount:
+		timer.stop()
+		is_spawning = false
 	print(waveIndex)
