@@ -97,9 +97,9 @@ text = "                "
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 167.0
+offset_left = 166.0
 offset_top = 1108.0
-offset_right = 207.0
+offset_right = 206.0
 offset_bottom = 1148.0
 theme_override_colors/font_outline_color = Color(0.215686, 0.133333, 0.168627, 1)
 theme_override_constants/outline_size = 15
@@ -110,9 +110,9 @@ scroll_active = false
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 42.0
+offset_left = 41.0
 offset_top = 1108.0
-offset_right = 82.0
+offset_right = 81.0
 offset_bottom = 1148.0
 theme_override_colors/font_outline_color = Color(0.215686, 0.133333, 0.168627, 1)
 theme_override_constants/outline_size = 15
@@ -123,9 +123,9 @@ scroll_active = false
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 104.0
+offset_left = 103.0
 offset_top = 1108.0
-offset_right = 144.0
+offset_right = 143.0
 offset_bottom = 1148.0
 theme_override_colors/font_outline_color = Color(0.215686, 0.133333, 0.168627, 1)
 theme_override_constants/outline_size = 15

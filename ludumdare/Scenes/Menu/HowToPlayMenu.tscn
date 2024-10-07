@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://c8e0pneyokgbx"]
+[gd_scene load_steps=6 format=4 uid="uid://c8e0pneyokgbx"]
 
 [ext_resource type="Script" path="res://Scripts/how_to_play_menu.gd" id="1_hfvbs"]
 [ext_resource type="Theme" uid="uid://deh8523wfifef" path="res://Scenes/Menu/MenuTheme.tres" id="1_ocd6g"]
 [ext_resource type="TileSet" uid="uid://dfw7xnfg83lfb" path="res://Assets/TileSets/kenney_tiny-town/Tilemap/TileSet.tres" id="2_4cxku"]
 [ext_resource type="FontFile" uid="uid://d2g861xq51i4e" path="res://Assets/Daydream.ttf" id="3_145bc"]
+[ext_resource type="AudioStream" uid="uid://1jhyr0j0pyd6" path="res://Sound/Penguin Band Boogie (Silly to Funky) - Dance-A-Thon, Dance Contest  Club Penguin OST.mp3" id="5_x51au"]
 
 [node name="HowToPlayMenu" type="Control"]
 layout_mode = 3
@@ -53,6 +54,8 @@ alignment = 1
 
 [node name="Back" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.215686, 0.133333, 0.168627, 1)
+theme_override_constants/outline_size = 10
 text = "Back
 "
 
@@ -125,8 +128,15 @@ offset_left = 614.0
 offset_top = 114.0
 offset_right = 1338.0
 offset_bottom = 206.0
+theme_override_constants/outline_size = 0
 theme_override_fonts/normal_font = ExtResource("3_145bc")
 theme_override_font_sizes/normal_font_size = 64
 text = "How to play"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_x51au")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

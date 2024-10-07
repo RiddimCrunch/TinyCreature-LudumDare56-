@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxjsbbyao2j0o"]
+[gd_scene load_steps=10 format=3 uid="uid://dxjsbbyao2j0o"]
 
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_2jja3"]
 [ext_resource type="FontFile" uid="uid://d2g861xq51i4e" path="res://Assets/Daydream.ttf" id="1_p1skn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d8twgsvi2l6v" path="res://Assets/Enemy/tile_0109_green.png" id="5_elso0"]
 [ext_resource type="Texture2D" uid="uid://b2u3s7xdji6mc" path="res://Assets/Enemy/tile_0109_red.png" id="6_biddk"]
 [ext_resource type="Texture2D" uid="uid://nx8k181wb64p" path="res://Assets/Enemy/tile_0109.png" id="7_03xio"]
+[ext_resource type="AudioStream" uid="uid://bnipscop6g728" path="res://Sound/Let's Bounce - Dance Contest  Club Penguin OST.mp3" id="8_md21g"]
 
 [sub_resource type="Theme" id="Theme_ha8k0"]
 default_font = ExtResource("1_p1skn")
@@ -51,11 +52,15 @@ alignment = 1
 
 [node name="Restart" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.215686, 0.133333, 0.168627, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_yk41t")
 text = "Restart"
 
 [node name="MainScreen" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.215686, 0.133333, 0.168627, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_yk41t")
 text = "Main menu"
 
@@ -87,6 +92,12 @@ texture = ExtResource("6_biddk")
 position = Vector2(1329.77, 450)
 scale = Vector2(5, 5)
 texture = ExtResource("7_03xio")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_md21g")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainScreen" to="." method="_on_main_screen_pressed"]

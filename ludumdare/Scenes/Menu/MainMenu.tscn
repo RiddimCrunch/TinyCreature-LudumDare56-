@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://blnxm3gda2oiy"]
+[gd_scene load_steps=10 format=4 uid="uid://blnxm3gda2oiy"]
 
 [ext_resource type="Theme" uid="uid://deh8523wfifef" path="res://Scenes/Menu/MenuTheme.tres" id="1_cwi88"]
 [ext_resource type="Script" path="res://Scripts/mainMenu.gd" id="1_w8guj"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://d2g861xq51i4e" path="res://Assets/Daydream.ttf" id="4_yu2oa"]
 [ext_resource type="Texture2D" uid="uid://dyec8gcffwhc3" path="res://Assets/Ally/tile_0108_green.png" id="5_jiis1"]
 [ext_resource type="Texture2D" uid="uid://pbrb12r68ynw" path="res://Assets/Ally/tile_0108_blue.png" id="6_fw1ys"]
+[ext_resource type="AudioStream" uid="uid://bnipscop6g728" path="res://Sound/Let's Bounce - Dance Contest  Club Penguin OST.mp3" id="9_liluh"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -165,6 +166,12 @@ theme_override_constants/outline_size = 31
 theme_override_fonts/normal_font = ExtResource("4_yu2oa")
 theme_override_font_sizes/normal_font_size = 64
 text = "Tiny Defense"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_liluh")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/How to play" to="." method="_on_how_to_play_pressed"]
