@@ -36,7 +36,7 @@ func _input(event: InputEvent) -> void:
 			
 func start_spawning():
 	if (!is_spawning):
-		timer.start(1)
+		timer.start(1.5)
 		is_spawning = true
 		
 func _process(_delta: float) -> void:

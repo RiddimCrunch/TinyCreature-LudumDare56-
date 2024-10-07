@@ -79,6 +79,8 @@ func check_win_lose():
 func _on_hq_creature_spawned(creature: Ally) -> void:
 	creature.dead.connect(_on_creature_death)
 	allies.append(creature) # Replace with function body.
+	if current_round != 0:
+		$AudioStreamPlayer2D.play()
 	if red_count <= blue_count and red_count <= green_count:
 		red_count+=1
 		creature.type.change_type(0)

@@ -74,6 +74,7 @@ func attackGentil():
 func receive_damage(dmg: float):
 	health -= dmg
 	flash()
+	$AudioStreamPlayer2D.play()
 	if (health <= 0):
 		die()
 		

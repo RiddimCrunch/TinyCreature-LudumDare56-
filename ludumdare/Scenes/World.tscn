@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://vey6qwwf4p7n"]
+[gd_scene load_steps=11 format=4 uid="uid://vey6qwwf4p7n"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_64sag"]
 [ext_resource type="TileSet" uid="uid://dfw7xnfg83lfb" path="res://Assets/TileSets/kenney_tiny-town/Tilemap/TileSet.tres" id="2_y04go"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dboiu24tm7lb8" path="res://Scenes/HpBar.tscn" id="7_0hvqx"]
 [ext_resource type="PackedScene" uid="uid://d1mptm78glf18" path="res://Scenes/score.tscn" id="8_vkcuy"]
 [ext_resource type="Script" path="res://Scripts/score.gd" id="9_27bkr"]
+[ext_resource type="AudioStream" uid="uid://bwusdj8r7d8cn" path="res://Sound/Spawn_1.mp3" id="10_8ds0i"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_64sag")
@@ -61,6 +62,9 @@ offset_bottom = 10.0
 grow_horizontal = 1
 grow_vertical = 1
 script = ExtResource("9_27bkr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_8ds0i")
 
 [connection signal="dmg_taken" from="." to="ProgressBar" method="_on_dmg_taken"]
 [connection signal="creature_spawned" from="Hq" to="." method="_on_hq_creature_spawned"]

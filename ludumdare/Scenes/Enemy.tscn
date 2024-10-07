@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://sj4v2dxei0bh"]
+[gd_scene load_steps=15 format=3 uid="uid://sj4v2dxei0bh"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_kc7uj"]
-[ext_resource type="Texture2D" uid="uid://2bkiq2x6rl3c" path="res://Assets/Enemy/tile_0109.png" id="1_kh2ko"]
+[ext_resource type="Texture2D" uid="uid://dwndp8wthln1l" path="res://Assets/Enemy/tile_0109.png" id="1_kh2ko"]
 [ext_resource type="Shader" path="res://Assets/Ally/Hit.gdshader" id="2_kyv7n"]
 [ext_resource type="Script" path="res://Scripts/entity_type.gd" id="3_nisge"]
-[ext_resource type="Texture2D" uid="uid://dwe5kkxthw6ef" path="res://Assets/Enemy/tile_0109_red.png" id="4_5kkfw"]
-[ext_resource type="Texture2D" uid="uid://bu01r3bs8najy" path="res://Assets/Enemy/tile_0109_green.png" id="5_5jheu"]
-[ext_resource type="Texture2D" uid="uid://bg5scqig1183x" path="res://Assets/Enemy/tile_0109_blue.png" id="6_bk088"]
+[ext_resource type="Texture2D" uid="uid://cet2jee6gk11r" path="res://Assets/Enemy/tile_0109_red.png" id="4_5kkfw"]
+[ext_resource type="Texture2D" uid="uid://dib02mw2c62vh" path="res://Assets/Enemy/tile_0109_green.png" id="5_5jheu"]
+[ext_resource type="Texture2D" uid="uid://j4ric1321sif" path="res://Assets/Enemy/tile_0109_blue.png" id="6_bk088"]
+[ext_resource type="AudioStream" uid="uid://7h4mxmweb1pp" path="res://Sound/grosseBibitte.wav" id="8_6krv0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0x4k4"]
 resource_local_to_scene = true
@@ -99,6 +100,11 @@ type_sprite = {
 
 [node name="FlashTimer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_6krv0")
+volume_db = 11.511
+pitch_scale = 1.65
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
