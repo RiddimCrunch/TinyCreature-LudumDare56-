@@ -3,11 +3,11 @@
 [ext_resource type="Theme" uid="uid://deh8523wfifef" path="res://Scenes/Menu/MenuTheme.tres" id="1_cwi88"]
 [ext_resource type="Script" path="res://Scripts/mainMenu.gd" id="1_w8guj"]
 [ext_resource type="TileSet" uid="uid://dfw7xnfg83lfb" path="res://Assets/TileSets/kenney_tiny-town/Tilemap/TileSet.tres" id="3_1omks"]
-[ext_resource type="Texture2D" uid="uid://cvvhfi1f3p1v6" path="res://Assets/Ally/tile_0108.png" id="4_60llu"]
-[ext_resource type="Texture2D" uid="uid://b1ucxalhy52rd" path="res://Assets/Ally/tile_0108_red.png" id="4_81s10"]
-[ext_resource type="FontFile" uid="uid://cdxt1c1i4444f" path="res://Assets/Daydream.ttf" id="4_yu2oa"]
-[ext_resource type="Texture2D" uid="uid://coqicqgegfhxd" path="res://Assets/Ally/tile_0108_green.png" id="5_jiis1"]
-[ext_resource type="Texture2D" uid="uid://0xbrjcwuisge" path="res://Assets/Ally/tile_0108_blue.png" id="6_fw1ys"]
+[ext_resource type="Texture2D" uid="uid://vj1dixds2rvu" path="res://Assets/Ally/tile_0108.png" id="4_60llu"]
+[ext_resource type="Texture2D" uid="uid://bk726y2mtler5" path="res://Assets/Ally/tile_0108_red.png" id="4_81s10"]
+[ext_resource type="FontFile" uid="uid://d2g861xq51i4e" path="res://Assets/Daydream.ttf" id="4_yu2oa"]
+[ext_resource type="Texture2D" uid="uid://dyec8gcffwhc3" path="res://Assets/Ally/tile_0108_green.png" id="5_jiis1"]
+[ext_resource type="Texture2D" uid="uid://pbrb12r68ynw" path="res://Assets/Ally/tile_0108_blue.png" id="6_fw1ys"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -75,6 +75,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Red2" type="TextureRect" parent="Phantoms"]
+layout_mode = 0
 offset_left = 940.0
 offset_top = 336.0
 offset_right = 980.0
@@ -84,6 +85,7 @@ scale = Vector2(2.6853, 2.6853)
 texture = ExtResource("4_81s10")
 
 [node name="Red" type="TextureRect" parent="Phantoms"]
+layout_mode = 0
 offset_left = 515.0
 offset_top = 382.0
 offset_right = 555.0
@@ -93,6 +95,7 @@ scale = Vector2(2.6853, 2.6853)
 texture = ExtResource("4_81s10")
 
 [node name="Green2" type="TextureRect" parent="Phantoms"]
+layout_mode = 0
 offset_left = 654.0
 offset_top = 327.0
 offset_right = 694.0
@@ -102,6 +105,7 @@ scale = Vector2(2.6853, 2.6853)
 texture = ExtResource("5_jiis1")
 
 [node name="Green" type="TextureRect" parent="Phantoms"]
+layout_mode = 0
 offset_left = 1059.0
 offset_top = 334.0
 offset_right = 1099.0
@@ -111,6 +115,7 @@ scale = Vector2(2.6853, 2.6853)
 texture = ExtResource("5_jiis1")
 
 [node name="Blue2" type="TextureRect" parent="Phantoms"]
+layout_mode = 0
 offset_left = 767.0
 offset_top = 326.0
 offset_right = 807.0
@@ -130,6 +135,7 @@ scale = Vector2(2.6853, 2.6853)
 texture = ExtResource("6_fw1ys")
 
 [node name="Normal3" type="TextureRect" parent="Phantoms"]
+layout_mode = 0
 offset_left = 858.0
 offset_top = 325.0
 offset_right = 898.0
@@ -139,6 +145,7 @@ scale = Vector2(2.6853, 2.6853)
 texture = ExtResource("4_60llu")
 
 [node name="Normal2" type="TextureRect" parent="Phantoms"]
+layout_mode = 0
 offset_left = 1300.0
 offset_top = 333.0
 offset_right = 1340.0

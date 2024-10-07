@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/how_to_play_menu.gd" id="1_hfvbs"]
 [ext_resource type="Theme" uid="uid://deh8523wfifef" path="res://Scenes/Menu/MenuTheme.tres" id="1_ocd6g"]
 [ext_resource type="TileSet" uid="uid://dfw7xnfg83lfb" path="res://Assets/TileSets/kenney_tiny-town/Tilemap/TileSet.tres" id="2_4cxku"]
-[ext_resource type="FontFile" uid="uid://cdxt1c1i4444f" path="res://Assets/Daydream.ttf" id="3_145bc"]
+[ext_resource type="FontFile" uid="uid://d2g861xq51i4e" path="res://Assets/Daydream.ttf" id="3_145bc"]
 
 [node name="HowToPlayMenu" type="Control"]
 layout_mode = 3
@@ -58,9 +58,9 @@ text = "Back
 
 [node name="Subtitle2" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1112.0
+offset_left = 1086.0
 offset_top = 389.0
-offset_right = 1836.0
+offset_right = 1810.0
 offset_bottom = 481.0
 theme_override_fonts/normal_font = ExtResource("3_145bc")
 theme_override_font_sizes/normal_font_size = 24
@@ -68,17 +68,16 @@ text = "2. Protect your base"
 
 [node name="Instruction2" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1110.0
-offset_top = 472.0
-offset_right = 1834.0
-offset_bottom = 736.0
+offset_left = 1084.0
+offset_top = 464.0
+offset_right = 1808.0
+offset_bottom = 794.0
 theme_override_fonts/normal_font = ExtResource("3_145bc")
 theme_override_font_sizes/normal_font_size = 16
 text = "- big monsters will try to destroy your base
 
 
-- big monsters of green type will be weak to green
-allies but strong against blue or red ones
+- big monsters are weakest against the same color of tiny monster
 
 
 -You will gain score and new allies will spawn at the end of each round
@@ -89,10 +88,10 @@ fit_content = true
 
 [node name="Instruction1" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 98.0
+offset_left = 186.0
 offset_top = 470.0
-offset_right = 822.0
-offset_bottom = 690.0
+offset_right = 910.0
+offset_bottom = 778.0
 theme_override_fonts/normal_font = ExtResource("3_145bc")
 theme_override_font_sizes/normal_font_size = 16
 text = "- Use your left click and drag to select
@@ -103,15 +102,18 @@ the monsters you want to control.
 them where to go.
 
 
+-While dragging, monsters will place themselves evenly on the drawn path
+
+
 - You can use the 1, 2 and 3 keys to select
 only a certain color of monsters"
 fit_content = true
 
 [node name="Subtitle1" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 87.0
+offset_left = 175.0
 offset_top = 390.0
-offset_right = 811.0
+offset_right = 899.0
 offset_bottom = 482.0
 theme_override_fonts/normal_font = ExtResource("3_145bc")
 theme_override_font_sizes/normal_font_size = 24

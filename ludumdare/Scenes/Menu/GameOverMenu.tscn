@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://dxjsbbyao2j0o"]
 
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_2jja3"]
-[ext_resource type="FontFile" uid="uid://cdxt1c1i4444f" path="res://Assets/Daydream.ttf" id="1_p1skn"]
-[ext_resource type="FontFile" uid="uid://bvx4povnf1ch" path="res://Assets/dogica.ttf" id="3_yk41t"]
-[ext_resource type="Texture2D" uid="uid://dc5v13ectr8d4" path="res://Assets/Enemy/tile_0109_blue.png" id="4_3smce"]
-[ext_resource type="Texture2D" uid="uid://cq2gire16jq71" path="res://Assets/Enemy/tile_0109_green.png" id="5_elso0"]
-[ext_resource type="Texture2D" uid="uid://dbe0ys3d73dlt" path="res://Assets/Enemy/tile_0109_red.png" id="6_biddk"]
-[ext_resource type="Texture2D" uid="uid://ckw28tipatcvl" path="res://Assets/Enemy/tile_0109.png" id="7_03xio"]
+[ext_resource type="FontFile" uid="uid://d2g861xq51i4e" path="res://Assets/Daydream.ttf" id="1_p1skn"]
+[ext_resource type="FontFile" uid="uid://f0g74o2dp2mv" path="res://Assets/dogica.ttf" id="3_yk41t"]
+[ext_resource type="Texture2D" uid="uid://bbqdkhvfa4hvr" path="res://Assets/Enemy/tile_0109_blue.png" id="4_3smce"]
+[ext_resource type="Texture2D" uid="uid://d8twgsvi2l6v" path="res://Assets/Enemy/tile_0109_green.png" id="5_elso0"]
+[ext_resource type="Texture2D" uid="uid://b2u3s7xdji6mc" path="res://Assets/Enemy/tile_0109_red.png" id="6_biddk"]
+[ext_resource type="Texture2D" uid="uid://nx8k181wb64p" path="res://Assets/Enemy/tile_0109.png" id="7_03xio"]
 
 [sub_resource type="Theme" id="Theme_ha8k0"]
 default_font = ExtResource("1_p1skn")
